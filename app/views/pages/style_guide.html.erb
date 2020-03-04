@@ -3,12 +3,25 @@ Hello!
 
 <section>
   <h2>Nav bar</h2>
+  <div id="nav-bar">
+    <div id="nav-logo">
+      <%= image_tag "logo.png", alt: "Vestigium", width: 200 %>
+    </div>
+    <div id="search-field-div">
+      <input type="text" name=search-field id=search-field placeholder="Search...">
+      <button id="search-button">Search</button>
+    </div>
+    <div id="user-avatar">
+      <%= image_tag "Avatar.png", alt: "avatar", width: 50 %>
+    </div>
+  </div>
 </section>
 
 <hr/>
 
 <section>
   <h2>Article</h2>
+
   <div class="article">
     <h2 class="article-headline">Search for passengers exposed to coronavirus case  on flight to Sydney</h2>
     <h3 class="article-source">The Sydney morning herald</h3>
@@ -24,6 +37,22 @@ Hello!
 
 <section>
   <h2>Map</h2>
+
+  <div
+  id="map"
+  style="width: 100%;
+  height: 600px;"
+  data-markers="<%= @markers.to_json %>"
+  data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
+  ></div>
+</section>
+
+<hr/>
+
+<section>
+  <h2>Search field</h2>
+  <input type="text" name=search-field id=search-field placeholder="Search...">
+  <button id="search-button"><i class="fas fa-search"></i></button>
 </section>
 
 <hr/>
