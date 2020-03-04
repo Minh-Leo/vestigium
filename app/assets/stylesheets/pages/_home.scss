@@ -1,1 +1,101 @@
 // Specific CSS for your home-page
+body {
+  background: #fff;
+  padding: 0 0px;
+  height: 100vh;
+}
+
+.main-home-container {
+  background: #fff;
+  width: 100%;
+  height: 100%;
+  border: 1px solid red;
+  display: flex;
+}
+
+
+.one-third {
+  width: 33%;
+  position: relative;
+}
+
+.feature-text-container {
+  position: absolute;
+    top: 150px;
+    right: -250px;
+
+  .feature-title {
+    font-size: 34px;
+    font-weight: bold;
+    font-family: 'Times New Roman';
+  }
+
+  .feature-text {
+
+  }
+}
+
+.red-square {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+    width: 450px;
+    height: 300px;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    background: #d00000;
+
+    .square-text {
+      color: #fff;
+    }
+}
+
+
+
+.two-third {
+  width: 66%;
+  position: relative;
+  background: linear-gradient(to top, #dddddd55, #dddddd55), url('https://res.cloudinary.com/thetravelusts/image/upload/v1583309945/Vestigium/osman-rana-dI9KhXi0ooE-unsplash_dkggh8.jpg') ;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.square-container {
+  width: 100%;
+  height: 300px;
+  display: flex;
+  position: absolute;
+    bottom: 0;
+    left: 0;
+
+  .black-square {
+    width: 50%;
+    height: 100%;
+    background: url('https://res.cloudinary.com/thetravelusts/image/upload/v1583308861/Vestigium/hayden-walker-ihiEd-_4TNY-unsplash_yhmdxh.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+  justify-content: center;
+  align-items: center;
+
+    h3, h6 {
+      color: #fff;
+    }
+  }
+
+  .white-square {
+    width: 50%;
+    height: 100%;
+    background: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    h3, h6 {
+      color: #000;
+    }
+  }
+}
