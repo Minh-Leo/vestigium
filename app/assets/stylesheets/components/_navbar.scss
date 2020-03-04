@@ -10,3 +10,45 @@
 .navbar-lewagon .navbar-brand img {
   width: 40px;
 }
+
+// Added by Nikolai
+#search-field {
+    background-color: transparent;
+    border: none;
+    border-bottom: 5px solid #091f2f;
+    border-radius: 0;
+    color: black;
+    font-family: Lora,Georgia,serif;
+    font-size: 20px;
+    height: 70%;
+    letter-spacing: -1px;
+    line-height: 1.3;
+    padding: 0 50px 0 0;
+    width: 100%;
+    outline: none;
+}
+
+input:focus::placeholder {
+  color: transparent;
+}
+
+#nav-bar {
+  height: 84px;
+  width: 100%;
+  background-color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+}
+
+#nav-logo {
+  margin-left: 20px
+}
+
+#search-field-div {
+  display: flex;
+  width: 40%
+}
+
+

@@ -1,0 +1,28 @@
+<h1 style="text-align:center">User Page</h1>
+<div class="container" style="display: flex;justify-content: center;">
+  <div class="card" style="width: 400px;">
+    <div class="profile-picture" style="padding: 20px;">
+      <% if current_user.photo.attached? %>
+              <%= cl_image_tag @user.photo.key, crop: :fit, class: "card-img-top" %>
+            <% else %>
+              <%= image_tag "https://res.cloudinary.com/dvbejvnhk/image/upload/v1582693057/koala-ava_k6pdbq.png", class: "card-img-top" %>
+            <% end %>
+    </div>
+    <div class="card-body">
+      <p><strong>Email: </strong><%=current_user.email%></p>
+      <p><strong>First name: </strong><%=(current_user.first_name == '') ? "no first name set" : current_user.first_name %></p>
+      <br>
+      <p><strong>Last name: </strong><%=(current_user.last_name == '') ? "no last name set" : current_user.last_name %></p>
+      <br>
+      <p><strong>Address: </strong><%=(current_user.first_name == '') ? "no address set" : current_user.address %></p>
+
+
+      <%= link_to "Edit User", edit_user_path(current_user) %>
+
+    </div>
+  </div>
+</div>
+<br>
+<br>
+
+
