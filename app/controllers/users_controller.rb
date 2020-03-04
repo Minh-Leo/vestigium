@@ -5,7 +5,7 @@ class UsersController < ApplicationController
 
   def show
 
-   end
+  end
 
   def update
     @user.update!(user_params)
