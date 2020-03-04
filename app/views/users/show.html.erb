@@ -12,9 +12,9 @@
       <p><strong>Email: </strong><%=current_user.email%></p>
       <p><strong>First name: </strong><%=(current_user.first_name == '') ? "no first name set" : current_user.first_name %></p>
       <br>
-      <p><strong>Last name: </strong><%=(current_user.last_name == '') ? "no last name set" : current_user.first_name %></p>
+      <p><strong>Last name: </strong><%=(current_user.last_name == '') ? "no last name set" : current_user.last_name %></p>
       <br>
-      <p><strong>Address: </strong><%=(current_user.first_name == '') ? "no address set" : current_user.first_name %></p>
+      <p><strong>Address: </strong><%=(current_user.first_name == '') ? "no address set" : current_user.address %></p>
 
 
       <%= link_to "Edit User", edit_user_path(current_user) %>
