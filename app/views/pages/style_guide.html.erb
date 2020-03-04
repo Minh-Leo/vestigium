@@ -9,6 +9,7 @@ Hello!
 
 <section>
   <h2>Article</h2>
+
   <div class="article">
     <h2 class="article-headline">Search for passengers exposed to coronavirus case  on flight to Sydney</h2>
     <h3 class="article-source">The Sydney morning herald</h3>
@@ -24,6 +25,22 @@ Hello!
 
 <section>
   <h2>Map</h2>
+
+  <div
+  id="map"
+  style="width: 100%;
+  height: 600px;"
+  data-markers="<%= @markers.to_json %>"
+  data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
+  ></div>
+</section>
+
+<hr/>
+
+<section>
+  <h2>Search field</h2>
+  <input type="text" name=search-field id=search-field placeholder="Search...">
+  <button id="search-button">Search</button>
 </section>
 
 <hr/>
