@@ -5,8 +5,9 @@ require 'open-uri'
 
 # categories = %w[business entertainment general health science sports technology]
 
-url = 'https://newsapi.org/v2/everything?language=en&from=2020-03-03&to=2020-03-04&sortBy=popularity&pageSize=70&page=1&sources='
+url = 'https://newsapi.org/v2/everything?language=en&sortBy=popularity&pageSize=70&page=1&sources='
 api_key = "apiKey=#{ENV['NEWS_API']}"
+timeframe = 'from=2020-03-03&to=2020-03-04'
 
 sources = %w[abc-news-au australian-financial-review news-com-au google-news cnn bloomberg fox-news espn techradar the-wall-street-journal reuters time bbc-news bbc-sport independent]
 
@@ -20,7 +21,7 @@ puts "sources created, size: #{Source.all.size}"
 #
 
 sources.each do |source|
-  data = open("#{url}#{source}&#{api_key}").read
+  data = open("#{url}#{source}&#{timeframe}&#{api_key}").read
   json = JSON.parse(data)
   # this below is an array
   sourceTemp = Source.where(name: source)
