@@ -11,6 +11,14 @@ class PagesController < ApplicationController
   end
 
   def news_main
-    @articles = Article.all
+    # @articles = Article.all.first(60).to_json.html_safe
+    # @articles = Article.all.to_json.html_safe
+
+    if params[:query].present?
+      @articles = PgSearch.multisearch(params[:query]).to_json.html_safe
+    else
+      @articles = Article.all.to_json.html_safe
+    end
+
   end
 end
