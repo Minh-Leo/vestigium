@@ -30,7 +30,7 @@
 }
 
 input:focus::placeholder {
-  color: transparent;
+color: transparent;
 }
 
 #nav-bar {
@@ -40,16 +40,24 @@ input:focus::placeholder {
   display: flex;
   justify-content: space-between;
   align-items: center;
-
 }
 
 #nav-logo {
-  margin-left: 20px
+}
+
+.nav-element {
+  margin: 20px
 }
 
 #search-field-div {
   display: flex;
   width: 40%
+}
+
+#search-button {
+  background-color: transparent;
+  margin-left: 5px;
+  outline: none;
 }
 
 

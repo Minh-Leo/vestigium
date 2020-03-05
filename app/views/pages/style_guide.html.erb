@@ -4,14 +4,15 @@ Hello!
 <section>
   <h2>Nav bar</h2>
   <div id="nav-bar">
-    <div id="nav-logo">
+    <div id="nav-logo" class="nav-element">
       <%= image_tag "logo.png", alt: "Vestigium", width: 200 %>
     </div>
-    <div id="search-field-div">
-      <input type="text" name=search-field id=search-field placeholder="Search...">
-      <button id="search-button">Search</button>
+    <div id="search-field-div" class="nav-element">
+      <input type="text" name=search-field id="search-field" placeholder="Search...">
+      <button id="search-button"><i class="fas fa-search"></i></button>
     </div>
-    <div id="user-avatar">
+
+    <div id="user-avatar" class="nav-element">
       <%= image_tag "Avatar.png", alt: "avatar", width: 50 %>
     </div>
   </div>
@@ -51,8 +52,10 @@ Hello!
 
 <section>
   <h2>Search field</h2>
-  <input type="text" name=search-field id=search-field placeholder="Search...">
-  <button id="search-button"><i class="fas fa-search"></i></button>
+  <div id=search-div>
+    <input type="text" name=search-field id=search-field placeholder="Search...">
+    <button id="search-button"><i class="fas fa-search"></i></button>
+  </div>
 </section>
 
 <hr/>
