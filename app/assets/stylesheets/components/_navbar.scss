@@ -1,6 +1,7 @@
 .navbar-lewagon {
   justify-content: space-between;
-  background: white;
+  background: #000;
+  padding: 5px 100px;
 }
 
 .navbar-lewagon .navbar-collapse {
@@ -8,12 +9,25 @@
 }
 
 .navbar-lewagon .navbar-brand img {
-  width: 40px;
+  width: 160px;
 }
+
+.navbar-dark .nav-item {
+  .nav-link {
+  color: #fff;
+  // font-family: 'fontastic_beastregular';
+  margin-right: 16px;
+  }
+  &.active .nav-link {
+    color: red;
+  }
+}
+
+
 
 // Added by Nikolai
 #search-field {
-    background-color: transparent;
+    background-color: #fff;
     border: none;
     border-bottom: 5px solid #091f2f;
     border-radius: 0;
@@ -29,7 +43,7 @@
 }
 
 input:focus::placeholder {
-  color: transparent;
+  color: #fff;
 }
 
 #nav-bar {
@@ -48,7 +62,14 @@ input:focus::placeholder {
 
 #search-field-div {
   display: flex;
-  width: 40%
+  width: 300px;
 }
 
 
+@media (max-width: 720px) {
+  .navbar-dark .nav-item {
+    .nav-link {
+    font-size: 12px;
+    }
+  }
+}
