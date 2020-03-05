@@ -31,11 +31,10 @@ const convertToArray = (articles) => {
   console.log(arrayArticles);
   return arrayArticles;
 }
+
 // https://newsapi.org/v2/everything?language=en&sortBy=popularity&domains=smh.com.au&pageSize=60
 
 // http://newsapi.org/v2/top-headlines?q=virus&country=us,au&pageSize=60
 
-// const initGetArticles = () => {
-
-
+  // const initGetArticles = () => {
   // window.

@@ -235,10 +235,5 @@ export const initCreate3Drender = () => {
     renderer.render( scene, camera );
   }
 
+  }
 }
-}
-// async code
-// getArticles().then(data => {
-//   console.log(data[1].content);
-//   create3Dglobe(data);
-// });

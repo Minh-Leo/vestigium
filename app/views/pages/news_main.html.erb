@@ -8,11 +8,6 @@
       <button id='create'>Create</button>
     </div>
 
-  <!-- <div id="search-field-div">
-      <input type="text" name=search-field id=search-field placeholder="Search...">
-      <button id="search-button">Search</button>
-  </div> -->
-
   <div class='row search-bar-container' id="search-field-div">
     <%= form_tag news_main_path, method: :get do %>
       <%= text_field_tag :query,
@@ -36,6 +31,7 @@
       Launch demo modal
     </button> -->
   <%# end %>
+<!-- modal display end -->
 
 
 
@@ -65,14 +61,12 @@
       </a>
     </div>
   </div> -->
-
-
 </div>
 
 
 
 
-    <!-- Modal -->
+<!-- Modal -->
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
