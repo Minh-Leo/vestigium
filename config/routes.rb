@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   get 'style-guide', to: 'pages#style_guide'
   get 'landing', to: 'pages#landing', as: 'landing'
   get 'news_main', to: 'pages#news_main', as: 'news_main'
+  get 'news_search', to: 'pages#news_search', as: 'news_search'
 
   resources :users, only: [:edit, :update, :show, :destroy]
 

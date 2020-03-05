@@ -126,12 +126,12 @@ export const create3Dglobe = data => {
 
     }, false );
 
-    var button = document.getElementById( 'grid' );
-    button.addEventListener( 'click', function () {
+    // var button = document.getElementById( 'grid' );
+    // button.addEventListener( 'click', function () {
 
-      transform( targets.grid, 2000 );
+    //   transform( targets.grid, 2000 );
 
-    }, false );
+    // }, false );
 
     transform( targets.sphere, 2000 );
 
@@ -140,25 +140,6 @@ export const create3Dglobe = data => {
     window.addEventListener( 'resize', onWindowResize, true );
 
   }
-
-
-        // function resizeCanvasToDisplaySize() {
-        //   const canvas = renderer.domElement;
-        //   // look up the size the canvas is being displayed
-        //   const width = canvas.clientWidth;
-        //   const height = canvas.clientHeight;
-        //   console.log(canvas.clientWidth, canvas.clientHeight);
-
-        //   // adjust displayBuffer size to match
-        //   if (canvas.width !== width || canvas.height !== height) {
-        //     // you must pass false here or three.js sadly fights the browser
-        //     renderer.setSize(width, height, false);
-        //     camera.aspect = width / height;
-        //     camera.updateProjectionMatrix();
-
-        //     // update any render target sizes here
-        //   }
-        // }
 
 
   function transform( targets, duration ) {
@@ -199,30 +180,12 @@ export const create3Dglobe = data => {
   }
 
   function animate() {
-        // added in
-        // resizeCanvasToDisplaySize();
-        // renderer.render(scene, camera);
-
     requestAnimationFrame( animate );
 
     TWEEN.update();
 
     controls.update();
-
   }
-
-
-      // function animate(time) {
-      // time *= 0.001;  // seconds
-
-      // resizeCanvasToDisplaySize();
-
-      // mesh.rotation.x = time * 0.5;
-      // mesh.rotation.y = time * 1;
-
-      // renderer.render(scene, camera);
-      // requestAnimationFrame(animate);
-      // }
 
 
   function render() {

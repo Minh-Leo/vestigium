@@ -43,10 +43,10 @@ export const initCreate3Drender = () => {
       image.style = 'width: 300px; height: 180px';
       element.appendChild( image );
 
-      var details = document.createElement( 'div' );
-      details.className = 'url';
-      details.innerHTML = table[i].url;
-      element.appendChild( details );
+      // var details = document.createElement( 'div' );
+      // details.className = 'url';
+      // details.innerHTML = table[i].url;
+      // element.appendChild( details );
 
       var details = document.createElement( 'div' );
       details.className = 'details';
@@ -132,12 +132,12 @@ export const initCreate3Drender = () => {
 
     }, false );
 
-    var button = document.getElementById( 'grid' );
-    button.addEventListener( 'click', function () {
+    // var button = document.getElementById( 'grid' );
+    // button.addEventListener( 'click', function () {
 
-      transform( targets.grid, 2000 );
+    //   transform( targets.grid, 2000 );
 
-    }, false );
+    // }, false );
 
     transform( targets.sphere, 2000 );
 
