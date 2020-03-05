@@ -11,5 +11,6 @@ class PagesController < ApplicationController
   end
 
   def news_main
+    @articles = Article.all
   end
 end
