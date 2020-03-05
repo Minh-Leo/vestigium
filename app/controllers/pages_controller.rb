@@ -9,4 +9,7 @@ class PagesController < ApplicationController
 
   def landing
   end
+
+  def news_main
+  end
 end
