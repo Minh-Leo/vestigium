@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_04_025556) do
+ActiveRecord::Schema.define(version: 2020_03_05_055958) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,10 +38,10 @@ ActiveRecord::Schema.define(version: 2020_03_04_025556) do
 
   create_table "article_keywords", force: :cascade do |t|
     t.bigint "keywords_id"
-    t.bigint "articles_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["articles_id"], name: "index_article_keywords_on_articles_id"
+    t.bigint "article_id"
+    t.index ["article_id"], name: "index_article_keywords_on_article_id"
     t.index ["keywords_id"], name: "index_article_keywords_on_keywords_id"
   end
 
@@ -67,10 +67,10 @@ ActiveRecord::Schema.define(version: 2020_03_04_025556) do
     t.string "note"
     t.integer "user_sentiment"
     t.bigint "user_id"
-    t.bigint "articles_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["articles_id"], name: "index_favorites_on_articles_id"
+    t.bigint "article_id"
+    t.index ["article_id"], name: "index_favorites_on_article_id"
     t.index ["user_id"], name: "index_favorites_on_user_id"
   end
 
@@ -113,8 +113,8 @@ ActiveRecord::Schema.define(version: 2020_03_04_025556) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "article_keywords", "articles", column: "articles_id"
+  add_foreign_key "article_keywords", "articles"
   add_foreign_key "article_keywords", "keywords", column: "keywords_id"
-  add_foreign_key "favorites", "articles", column: "articles_id"
+  add_foreign_key "favorites", "articles"
   add_foreign_key "favorites", "users"
 end
