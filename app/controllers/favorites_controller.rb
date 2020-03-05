@@ -7,9 +7,10 @@ class FavoritesController < ApplicationController
   end
 
   def create
+    @favorite = Favorite.new
     @favorite.user = current_user
     @favorite.article = Article.find(params[:article_id])
-    raise
+    @favorite.save!
   end
 
   def edit; end
