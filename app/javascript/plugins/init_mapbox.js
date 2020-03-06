@@ -3,13 +3,27 @@ import mapboxgl from 'mapbox-gl';
 const initMapbox = () => {
   const mapElement = document.getElementById('map');
 
-  if (mapElement) { // only build a map if there's a div#map to inject into
+  const fitMapToMarker = (map, marker) => {
+    const bounds = new mapboxgl.LngLatBounds();
+    bounds.extend([ marker.lng, marker.lat ]);
+    map.fitBounds(bounds, { padding: 70, zoom: 7, duration: 3000 });
+  };
+
+  if (mapElement) {
     mapboxgl.accessToken = mapElement.dataset.mapboxApiKey;
     const map = new mapboxgl.Map({
       container: 'map',
-      style: 'mapbox://styles/mapbox/streets-v10'
+      style: 'mapbox://styles/minhbui/ck7460q0e2wqo1hk4zeujsi6f'
     });
-  }
+
+    const marker = JSON.parse(mapElement.dataset.marker);
+
+    new mapboxgl.Marker()
+        .setLngLat([ marker.lng, marker.lat ])
+        .addTo(map);
+
+    fitMapToMarker(map, marker);
+  };
 };
 
 export { initMapbox };
