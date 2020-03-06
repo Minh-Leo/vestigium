@@ -10,6 +10,10 @@ class PagesController < ApplicationController
   def landing
   end
 
+  def dashboard
+    @favorites = Favorite.where(user: current_user)
+  end
+
   def news_main
     @articles = Article.all
   end
