@@ -6,6 +6,7 @@ import { CSS3DRenderer, CSS3DObject } from 'three/examples/jsm/renderers/CSS3DRe
 
 import { getArticles } from './data';
 
+const modalsContainer = document.getElementById('modals-container');
 
 export const create3Dglobe = data => {
   var table = data;
@@ -16,6 +17,7 @@ export const create3Dglobe = data => {
   var objects = [];
   var targets = { table: [], sphere: [], helix: [], grid: [] };
 
+  modalsContainer.innerHTML = '';
   init();
   animate();
 
@@ -27,8 +29,22 @@ export const create3Dglobe = data => {
 
     for ( var i = 0; i < table.length; i += 1 ) {
 
-      var element = document.createElement( 'div' );
+      var element = document.createElement( 'a' );
       element.className = 'element';
+      element.id = `news-card-${i}`;
+      // element.href = table[i].url;
+      element.target = '_blank';
+      // element.setAttribute('style', ':hover {}')
+
+      // var url = document.createElement( 'a' );
+      // url.className = 'url';
+      // url.href = table[i].url;
+      // url.textContent = table[i].url;
+      // url.style.display = 'none';
+      // url.appendChild( element );
+
+      // element.addEventListener('click',() => {
+      //   window.location.replace(url.innerText)});
       // element.style.backgroundColor = `rgba(255,255,255, ${(Math.random() * (1 - 0.7) + 0.7).toFixed(2)})`;
 
       var title = document.createElement( 'div' );
@@ -46,6 +62,40 @@ export const create3Dglobe = data => {
       details.className = 'details';
       details.innerHTML = table[i].description;
       element.appendChild( details );
+
+
+      let buttonToInsert = `
+      <button type="button" class="btn btn-primary btn-news-modal" data-toggle="modal" data-target="#news-modal-${i}">
+            More info
+      </button>`;
+
+      let modalToInsert = `
+            <div class="modal fade" id="news-modal-${i}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h4 class="modal-title" id="exampleModalLabel">${table[i].title}</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <img src='${table[i].image_url}' style='width: 100%;'>
+                    <h5>by: <strong>${table[i].author}</strong><h5>
+                    <p>${table[i].content}<p>
+                  </div>
+
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-success"><a href='${table[i].url}' target='_blank'>Read me</a></button>
+                  </div>
+                </div>
+              </div>
+            </div>
+      `;
+      element.insertAdjacentHTML('beforeend', buttonToInsert);
+      modalsContainer.insertAdjacentHTML('beforeend', modalToInsert);
+
 
       var object = new CSS3DObject( element );
       object.position.x = Math.random() * 4000 - 2000;

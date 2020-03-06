@@ -22,13 +22,14 @@ const convertToArray = (articles) => {
   const arrayArticles = articles.map((el, index) => {
     return {
       title: el.title,
+      author: el.author,
       description: el.description,
       url: el.url,
       image_url: el.urlToImage,
       content: el.content
     }
   })
-  console.log(arrayArticles);
+  // console.log(arrayArticles);
   return arrayArticles;
 }
 

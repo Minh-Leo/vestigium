@@ -28,8 +28,11 @@ export const initCreate3Drender = () => {
 
     for ( var i = 0; i < table.length; i += 1 ) {
 
-      var element = document.createElement( 'div' );
+      var element = document.createElement( 'a' );
       element.className = 'element';
+      element.href = table[i].url;
+      element.target = '_blank';
+
       // element.style.backgroundColor = `rgba(255,255,255, ${(Math.random() * (1 - 0.7) + 0.7).toFixed(2)})`;
 
       var title = document.createElement( 'div' );

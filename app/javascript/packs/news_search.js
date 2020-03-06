@@ -7,13 +7,19 @@ const createButton = document.getElementById('create');
 const searchButton = document.getElementById('submit-search-btn');
 const searchForm = document.getElementById('search-field-div');
 const searchField = document.getElementById('search-field');
+const threeContainer = document.getElementById('three-container');
+const newsSectionContainer = document.getElementById('news-section');
+
 
 searchForm.addEventListener('submit', (e) => {
   e.preventDefault();
+  threeContainer.innerHTML = '';
   console.log(searchField.value);
   getArticles(searchField.value).then(data => {
-    console.log(data[1]);
+    // console.log(data[1]);
     create3Dglobe(data);
+    console.log(data);
+    // createInfoHover(data);
   });
 })
 
