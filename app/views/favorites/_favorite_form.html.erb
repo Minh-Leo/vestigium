@@ -1,5 +1,5 @@
 <%= simple_form_for([@article, @favorite]) do |f| %>
   <%= f.input :note %>
   <%= f.input :user_sentiment %>
-  <%= f.button :submit %>
+  <%= link_to "Create", article_favorites_path %>
 <% end %>
