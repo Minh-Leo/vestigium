@@ -5,18 +5,18 @@
       <button id="search-button">Search</button>
   </div>
 
-  <% @articles.first(3).each do |article| %>
-    <%= link_to article.title, "#", 'data-target': "#exampleModal", 'data-toggle': 'modal'  %>
+  <% @articles.last(3).each do |article| %>
+    <%= link_to article.title, "#", 'data-target': "#article_#{article.id}", 'data-toggle': 'modal'  %>
 <!--     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
       Launch demo modal
     </button> -->
 
     <!-- Modal -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="article_<%= article.id %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel"><%= article.title %></h5>
+            <h5 class="modal-title" id="exampleModalLabel"><%= article.title %>, <%= article.id %></h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
@@ -25,8 +25,8 @@
             ...
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary"><%= link_to "save to favorites", article_favorites_path(current_user, article), method: :post %></button>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal"><%= link_to "save to favorites", article_favorites_path(current_user, article), method: :post %></button>
+            <button type="button" class="btn btn-primary" data-dismiss="modal"></button>
           </div>
         </div>
       </div>

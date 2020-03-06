@@ -1,0 +1,20 @@
+<div class="container">
+  <h1>Dashboard</h1>
+
+  <h3>Favorites</h3>
+  <div id="favorite-container">
+    <% @favorites.each do |favorite| %>
+      <div class="favorite">
+        <!-- <div class="favorite-article-img">
+          <p><%= image_tag favorite.article.image_url %></p>
+        </div> -->
+        <div class="favorite-link">
+          <p><%= link_to "#{favorite.article.title}", favorite.article.url %></p>
+        </div>
+        <div class="favorite-note">
+          <p><%= favorite.note %></p>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 
   get 'style-guide', to: 'pages#style_guide'
   get 'landing', to: 'pages#landing', as: 'landing'
+  get 'dashboard', to: 'pages#dashboard', as: 'dashboard'
   get 'news_main', to: 'pages#news_main', as: 'news_main'
 
   resources :users, only: [:edit, :update, :show, :destroy]

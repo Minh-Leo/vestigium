@@ -1,0 +1,32 @@
+// #favorite-container {
+//   width: 80%;
+//   display: flex;
+//   flex-direction: column;
+// }
+
+.favorite {
+  display: flex;
+  width: 100%;
+  background-color: white;
+  border: 1px solid gray;
+  margin: 20px;
+  padding: 20px;
+  justify-content: space-around;
+  align-items: center;
+  color: black;
+  box-shadow: 0px 0px 8px #888888;
+}
+
+.favorite-article-img {
+height: 100%;
+}
+
+a {
+  text-decoration: none; /* no underline */
+  color: black;
+}
+
+a:hover {
+  text-decoration: none; /* no underline */
+  color: gray;
+}
