@@ -46,7 +46,7 @@ export const create3Dglobe = (data, radius) => {
       var image = document.createElement( 'img' );
       image.className = 'image';
       image.src = table[i].image_url;
-      image.style = 'width: 300px;';
+      image.style = 'width: 300px; height: 180px';
       element.appendChild( image );
 
       var details = document.createElement( 'div' );
@@ -72,11 +72,11 @@ export const create3Dglobe = (data, radius) => {
                   </div>
                   <div class="modal-body">
                     <img src='${table[i].image_url}' style='width: 100%;'>
-                    <h5>by: <strong>${table[i].author}</strong><h5>
+                    <h5>by: <strong>${table[i].author ? table[i].author : 'Author unknown'}</strong><h5>
                     <h5>Published at: <strong>${
                       table[i].source ? table[i].source : checkSourceName(table[i].source_id)
                     }</strong><br><strong>${table[i].publish_time}</strong><h5>
-                    <p>${table[i].body}<p>
+                    <p>${table[i].body ? table[i].body : table[i].description}<p>
                   </div>
 
                   <div class="modal-footer">
