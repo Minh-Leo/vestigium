@@ -5,14 +5,11 @@ export const getArticles = async (term) => {
   mode: 'cors',
   cache: 'no-cache',
   headers: {
-    'x-api-key' : 'b8b01da36f1c46458b933e9749635cd6'
+    'x-api-key' : process.env.NEWS_API
   }
 });
 
   const data = await resp.json();
-  // const topHeadlines = await
-  // data.then(()=>{console.log(term, data.articles);})
-  // return convertToArray(data.articles);
   return convertToArray(data.articles);
 }
 
@@ -23,19 +20,24 @@ const convertToArray = (articles) => {
     return {
       title: el.title,
       author: el.author,
-      description: el.description,
       url: el.url,
       image_url: el.urlToImage,
-      content: el.content
+      description: el.description,
+      body: el.content,
+      publish_time: el.publishedAt,
+      source: el.source.name
     }
   })
-  // console.log(arrayArticles);
   return arrayArticles;
 }
+
+// use in database analyzing
+export const checkSourceName = (id) => {
+  const sourceNames = ['abc-news-au', 'australian-financial-review', 'news-com-au', 'nbc-news', 'cnn', 'bloomberg', 'fox-news', 'espn', 'techradar', 'the-wall-street-journal', 'reuters', 'time', 'bbc-news', 'bbc-sport', 'independent'];
+  return sourceNames[id - 1].toUpperCase();
+}
+
 
 // https://newsapi.org/v2/everything?language=en&sortBy=popularity&domains=smh.com.au&pageSize=60
 
 // http://newsapi.org/v2/top-headlines?q=virus&country=us,au&pageSize=60
-
-  // const initGetArticles = () => {
-  // window.
