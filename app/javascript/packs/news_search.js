@@ -16,17 +16,7 @@ searchForm.addEventListener('submit', (e) => {
   threeContainer.innerHTML = '';
   console.log(searchField.value);
   getArticles(searchField.value).then(data => {
-    // console.log(data[1]);
     create3Dglobe(data, 900);
-    console.log(data);
-    // createInfoHover(data);
+    // console.log(data);
   });
 })
-
-  // searchButton.addEventListener('click', (e) => {
-  //   e.preventDefault();
-  //   dataJson = <%= @articles %>;
-  //   articles = dataJson.slice(0, 50);
-  //   console.log('hello beauty');
-  //   create3Dglobe2(articles);
-  // });

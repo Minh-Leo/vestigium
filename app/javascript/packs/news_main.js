@@ -12,27 +12,8 @@ const newsSectionContainer = document.getElementById('news-section');
 searchForm.addEventListener('submit', (e) => {
   e.preventDefault();
 
-
   let articles = dataJson.slice(0, 120);
   threeContainer.innerHTML = '';
   console.log(searchField.value);
   create3Dglobe(articles, 1200);
-
 });
-
-
-
-  // searchButton.addEventListener('click', (e) => {
-  //   e.preventDefault();
-  //   dataJson = <%= @articles %>;
-  //   articles = dataJson.slice(0, 50);
-  //   console.log('hello beauty');
-  //   create3Dglobe2(articles);
-  // });
-
-
-  // searchForm.addEventListener('submit', (e) => {
-  //   e.preventDefault();
-  //   console.log('hello beauty');
-  //   create3Dglobe2(articles);
-  // });

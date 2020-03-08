@@ -33,7 +33,6 @@ export const create3Dglobe = (data, radius) => {
       element.className = 'element';
       element.id = `news-card-${i}`;
       element.target = '_blank';
-      // element.setAttribute('style', ':hover {}')
 
       // element.addEventListener('click',() => {
       //   window.location.replace(url.innerText)});
@@ -238,9 +237,3 @@ export const create3Dglobe = (data, radius) => {
   }
 
 }
-
-// async code
-// getArticles().then(data => {
-//   console.log(data[1].content);
-//   create3Dglobe(data);
-// });

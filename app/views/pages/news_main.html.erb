@@ -25,35 +25,6 @@
 
   <div id="modals-container"></div>
 
-
-<!-- modal display article -->
-      <%# @articles.first(3).each do |article| %>
-        <%#= link_to article.title, "#", 'data-target': "#exampleModal", 'data-toggle': 'modal'  %>
-<!--     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-      Launch demo modal
-    </button> -->
-  <%# end %>
-<!-- modal display end -->
-
-
-
-
- <!--  <div class="news-container">
-    <br>
-    <h2>
-      Article Title:     </h2>
-    <div class="feature-text-container">
-
-    </div>
-    <a href="#" class="keywords-container">
-
-    </a>
-  </div>
-
-  <div class="globe-container"> -->
-
-
-
    <!--  <div class="tags-container">
       <a href="#" class="tag left-tag">
         Previous
@@ -74,18 +45,3 @@
 </script>
 
 <%= javascript_pack_tag 'news_main' %>
-
-<!-- <script type="module">
-  let dataJson = <%= @articles %>;
-  let articles = dataJson.slice(0, 120);
-  // const createButton = document.getElementById('create');
-  const searchForm = document.getElementById('search-field-div');
-
-  searchForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-    // let dataJson = <%= @articles %>;
-    // articles = dataJson.slice(0, 70);
-    console.log('hello beauty');
-    create3Dglobe2(articles);
-  });
-</script> -->

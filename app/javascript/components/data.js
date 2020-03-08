@@ -10,9 +10,6 @@ export const getArticles = async (term) => {
 });
 
   const data = await resp.json();
-  // const topHeadlines = await
-  // data.then(()=>{console.log(term, data.articles);})
-  // return convertToArray(data.articles);
   return convertToArray(data.articles);
 }
 
@@ -31,7 +28,6 @@ const convertToArray = (articles) => {
       source: el.source.name
     }
   })
-  // console.log(arrayArticles);
   return arrayArticles;
 }
 
@@ -45,8 +41,3 @@ export const checkSourceName = (id) => {
 // https://newsapi.org/v2/everything?language=en&sortBy=popularity&domains=smh.com.au&pageSize=60
 
 // http://newsapi.org/v2/top-headlines?q=virus&country=us,au&pageSize=60
-
-  // const initGetArticles = () => {
-  // window.
-
-// 'b8b01da36f1c46458b933e9749635cd6'
