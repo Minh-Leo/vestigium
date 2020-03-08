@@ -23,7 +23,6 @@ class PagesController < ApplicationController
     else
       @articles = Article.all.to_json.html_safe
     end
-
   end
 
   def news_search

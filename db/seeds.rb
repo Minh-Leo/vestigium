@@ -1,10 +1,6 @@
 require 'json'
 require 'open-uri'
 
-# `https://newsapi.org/v2/top-headlines?language=en&sortBy=popularity&pageSize=100`
-
-# categories = %w[business entertainment general health science sports technology]
-
 url = 'https://newsapi.org/v2/everything?language=en&sortBy=popularity&pageSize=70&page=1&sources='
 api_key = "apiKey=#{ENV['NEWS_API']}"
 timeframe = 'from=2020-03-03&to=2020-03-04'
@@ -44,7 +40,9 @@ end
 
 puts 'End of seeding'
 
+# `https://newsapi.org/v2/top-headlines?language=en&sortBy=popularity&pageSize=100`
 
+# categories = %w[business entertainment general health science sports technology]
 
 # AU :
 # abc-news-au

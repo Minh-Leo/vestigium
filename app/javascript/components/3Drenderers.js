@@ -4,13 +4,13 @@ import { TWEEN } from 'three/examples/jsm/libs/tween.module.min';
 import { TrackballControls } from 'three/examples/jsm/controls/TrackballControls';
 import { CSS3DRenderer, CSS3DObject } from 'three/examples/jsm/renderers/CSS3DRenderer';
 
-import { getArticles } from './data';
+import { getArticles, checkSourceName } from './data';
 
 const modalsContainer = document.getElementById('modals-container');
 
-export const create3Dglobe = data => {
+export const create3Dglobe = (data, radius) => {
   var table = data;
-  console.log(table);
+  // console.log(table);
   var camera, scene, renderer;
   var controls;
 
@@ -32,16 +32,8 @@ export const create3Dglobe = data => {
       var element = document.createElement( 'a' );
       element.className = 'element';
       element.id = `news-card-${i}`;
-      // element.href = table[i].url;
       element.target = '_blank';
       // element.setAttribute('style', ':hover {}')
-
-      // var url = document.createElement( 'a' );
-      // url.className = 'url';
-      // url.href = table[i].url;
-      // url.textContent = table[i].url;
-      // url.style.display = 'none';
-      // url.appendChild( element );
 
       // element.addEventListener('click',() => {
       //   window.location.replace(url.innerText)});
@@ -55,7 +47,7 @@ export const create3Dglobe = data => {
       var image = document.createElement( 'img' );
       image.className = 'image';
       image.src = table[i].image_url;
-      image.style = 'width: 300px; height: 180px';
+      image.style = 'width: 300px;';
       element.appendChild( image );
 
       var details = document.createElement( 'div' );
@@ -82,7 +74,10 @@ export const create3Dglobe = data => {
                   <div class="modal-body">
                     <img src='${table[i].image_url}' style='width: 100%;'>
                     <h5>by: <strong>${table[i].author}</strong><h5>
-                    <p>${table[i].content}<p>
+                    <h5>Published at: <strong>${
+                      table[i].source ? table[i].source : checkSourceName(table[i].source_id)
+                    }</strong><br><strong>${table[i].publish_time}</strong><h5>
+                    <p>${table[i].body}<p>
                   </div>
 
                   <div class="modal-footer">
@@ -123,7 +118,7 @@ export const create3Dglobe = data => {
 
       var object = new THREE.Object3D();
 
-      object.position.setFromSphericalCoords( 800, phi, theta );
+      object.position.setFromSphericalCoords( radius, phi, theta );
 
       vector.copy( object.position ).multiplyScalar( 2 );
 

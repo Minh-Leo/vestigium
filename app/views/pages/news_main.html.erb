@@ -8,20 +8,22 @@
       <button id='create'>Create</button>
     </div>
 
-  <div class='row search-bar-container' id="search-field-div">
-    <%= form_tag news_main_path, method: :get do %>
-      <%= text_field_tag :query,
-        params[:query],
-        class: "form-control search-input",
-        id: 'search-field',
-        placeholder: "Find a keyword"
-      %>
-      <span class="input-group-btn">
-        <i class="fas fa-search"><%= submit_tag "", class: "btn-dark search-btn", id: "submit-search-btn" %></i>
-      </span>
-    <% end %>
-  </div>
+  <%= form_tag news_main_path,
+    class: 'row search-bar-container',
+    id: 'search-field-div',
+    method: :get do %>
+    <%= text_field_tag :query,
+      params[:query],
+      class: "form-control search-input",
+      id: 'search-field',
+      placeholder: "Find a keyword"
+    %>
+    <span class="input-group-btn">
+      <i class="fas fa-search"><%= submit_tag "", class: "btn-dark search-btn", id: "submit-search-btn" %></i>
+    </span>
+  <% end %>
 
+  <div id="modals-container"></div>
 
 
 <!-- modal display article -->
@@ -66,39 +68,24 @@
 
 
 
-<!-- Modal -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel"><%#= article.title %></h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            ...
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary"><%#= link_to "save to favorites", article_favorites_path(current_user, article), method: :post %></button>
-          </div>
-        </div>
-      </div>
-    </div>
-<!-- end modal -->
 
-<script type="module">
-  var dataJson = <%= @articles %>;
-  let articles = dataJson.slice(0, 60);
-  const createButton = document.getElementById('create');
-  const searchButton = document.getElementById('submit-search-btn');
+<script>
+  let dataJson = <%= @articles %>;
+</script>
 
-  searchButton.addEventListener('click', (e) => {
+<%= javascript_pack_tag 'news_main' %>
+
+<!-- <script type="module">
+  let dataJson = <%= @articles %>;
+  let articles = dataJson.slice(0, 120);
+  // const createButton = document.getElementById('create');
+  const searchForm = document.getElementById('search-field-div');
+
+  searchForm.addEventListener('submit', (e) => {
     e.preventDefault();
-    dataJson = <%= @articles %>;
-    articles = dataJson.slice(0, 50);
+    // let dataJson = <%= @articles %>;
+    // articles = dataJson.slice(0, 70);
     console.log('hello beauty');
     create3Dglobe2(articles);
   });
-</script>
+</script> -->
