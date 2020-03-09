@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   get 'dashboard', to: 'pages#dashboard', as: 'dashboard'
   get 'news_main', to: 'pages#news_main', as: 'news_main'
   get 'news_search', to: 'pages#news_search', as: 'news_search'
+  get 'global_map', to: 'pages#global_map', as: 'global_map'
 
   resources :users, only: [:edit, :update, :show, :destroy]
 

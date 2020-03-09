@@ -1,9 +1,9 @@
 require 'json'
 require 'open-uri'
 
-url = 'https://newsapi.org/v2/everything?language=en&sortBy=popularity&pageSize=70&page=1&sources='
+url = 'https://newsapi.org/v2/everything?language=en&sortBy=popularity&pageSize=80&page=1&sources='
 api_key = "apiKey=#{ENV['NEWS_API']}"
-timeframe = 'from=2020-03-03&to=2020-03-04'
+timeframe = 'from=2020-03-05&to=2020-03-07'
 
 sources = %w[abc-news-au australian-financial-review news-com-au nbc-news cnn bloomberg fox-news espn techradar the-wall-street-journal reuters time bbc-news bbc-sport independent]
 

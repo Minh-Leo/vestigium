@@ -87,7 +87,7 @@
   width: 300px;
   height: 340px;
   padding: 10px;
-  background-color: rgba(#ffffff, 0.8);
+  background: #fff;
   box-shadow: 0px 0px 12px #7b082877;
   border: 1px solid #7b082877;
   border-bottom-left-radius: 50% 10%;
@@ -106,6 +106,7 @@
   background-color: #fff;
   box-shadow: 0px 0px 12px rgba(#d00000,0.75);
   border: 1px solid red;
+  transform: scale(1.05);
 }
 
   // .element .number {
@@ -167,3 +168,4 @@ button:active {
   color: #000000;
   background-color: rgba(0,255,255,0.75);
 }
+

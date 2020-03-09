@@ -1,5 +1,4 @@
 import * as THREE from 'three';
-
 import { TWEEN } from 'three/examples/jsm/libs/tween.module.min';
 import { TrackballControls } from 'three/examples/jsm/controls/TrackballControls';
 import { CSS3DRenderer, CSS3DObject } from 'three/examples/jsm/renderers/CSS3DRenderer';
@@ -34,8 +33,21 @@ export const create3Dglobe = (data, radius) => {
       element.id = `news-card-${i}`;
       element.target = '_blank';
 
-      // element.addEventListener('click',() => {
-      //   window.location.replace(url.innerText)});
+      if (table[i].sentiment) {
+        console.log('therere sentiment');
+        if (table[i].sentiment < -5) {
+          element.style.border = `10px dashed #FF0000`;
+        }
+        if (table[i].sentiment >= -5 && table[i].sentiment < 2) {
+          element.style.border = `10px solid #9DD1F1`;
+        }
+        if (table[i].sentiment > 2) {
+          element.style.border = `10px dotted #60992D`;
+        }
+      } else {
+        element.style.border = `none`;
+      }
+
       // element.style.backgroundColor = `rgba(255,255,255, ${(Math.random() * (1 - 0.7) + 0.7).toFixed(2)})`;
 
       var title = document.createElement( 'div' );
@@ -134,7 +146,7 @@ export const create3Dglobe = (data, radius) => {
 
       object.position.x = ( ( i % 5 ) * 400 ) - 800;
       object.position.y = ( - ( Math.floor( i / 5 ) % 5 ) * 400 ) + 800;
-      object.position.z = ( Math.floor( i / 25 ) ) * 1000 - 2000;
+      object.position.z = ( Math.floor( i / 25 ) ) * 2000 - 2000;
 
       targets.grid.push( object );
     }
@@ -170,12 +182,12 @@ export const create3Dglobe = (data, radius) => {
 
     }, false );
 
-    // var button = document.getElementById( 'grid' );
-    // button.addEventListener( 'click', function () {
+    var button = document.getElementById( 'grid' );
+    button.addEventListener( 'click', function () {
 
-    //   transform( targets.grid, 2000 );
+      transform( targets.grid, 2000 );
 
-    // }, false );
+    }, false );
 
     transform( targets.sphere, 2000 );
 

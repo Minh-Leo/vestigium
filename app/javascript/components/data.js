@@ -13,8 +13,6 @@ export const getArticles = async (term) => {
   return convertToArray(data.articles);
 }
 
-
-
 const convertToArray = (articles) => {
   const arrayArticles = articles.map((el, index) => {
     return {
