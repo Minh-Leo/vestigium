@@ -9,7 +9,6 @@ const modalsContainer = document.getElementById('modals-container');
 
 export const create3Dglobe = (data, radius) => {
   var table = data;
-  // console.log(table);
   var camera, scene, renderer;
   var controls;
 
@@ -36,14 +35,18 @@ export const create3Dglobe = (data, radius) => {
       // Sentimental value display
       if (table[i].sentiment) {
         console.log('therere sentiment');
+
         if (table[i].sentiment < -5) {
-          element.style.border = `10px dashed #FF0000`;
+          element.style.border = `10px solid #FF0000`;
+          element.classList.add('negative');
         }
         if (table[i].sentiment >= -5 && table[i].sentiment < 2) {
-          element.style.border = `10px solid #9DD1F1`;
+          element.style.border = `10px solid #FFFF00`;
+          element.classList.add('neutral');
         }
         if (table[i].sentiment > 2) {
-          element.style.border = `10px dotted #60992D`;
+          element.style.border = `10px solid #0000FF`;
+          element.classList.add('positive');
         }
       } else {
         element.style.border = `none`;
@@ -78,7 +81,7 @@ export const create3Dglobe = (data, radius) => {
               <div class="modal-dialog" role="document">
                 <div class="modal-content">
                   <div class="modal-header">
-                    <h4 class="modal-title" id="exampleModalLabel">${table[i].title}, id:${table[i].id} </h4>
+                    <h4 class="modal-title" id="exampleModalLabel">${table[i].title}</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                       <span aria-hidden="true">&times;</span>
                     </button>

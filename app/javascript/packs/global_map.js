@@ -16,13 +16,13 @@
 
   // var markerCustom = WE.marker([50, -9], '/img/logo-webglearth-white-100.png', 100, 24).addTo(earth);
 
-  earth.setView([45.505, 0], 3);
+  earth.setView([30.2744, 75.7751], 3);
 }
 
 const initializeMarkers = (mapData, earth) => {
   mapData.forEach(data => {
     let marker = WE.marker([data.coor[1], data.coor[0]]).addTo(earth);
-    marker.bindPopup(`<b>${data.title}</b><a href='${data.url}' target='_blank' class='btn-news-on-map' style=''>Read me</a>`, {maxWidth: 150, closeButton: true});
+    marker.bindPopup(`<b>${data.title}</b><img src='${data.image_url}' style='width: 100%; border-radius:10px;'><a href='${data.url}' target='_blank' class='btn-news-on-map' style=''>Read me</a>`, {maxWidth: 150, closeButton: true});
   })
 }
 

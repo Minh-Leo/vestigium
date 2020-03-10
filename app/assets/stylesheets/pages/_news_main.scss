@@ -76,6 +76,12 @@
   // border: 2px solid red;
 }
 
+#keywords {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
 #three-menu {
   position: absolute;
   bottom: 20px;
@@ -84,7 +90,7 @@
 }
 
 .onlyColor {
-  width: unset !important;
+  width: 0px !important;
 }
 
 .element {
@@ -104,6 +110,7 @@
   cursor: default;
   overflow: hidden;
   position: relative;
+  transition: width 1s ease;
 }
 
 .element:hover {

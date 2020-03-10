@@ -7,10 +7,18 @@
     <button id="grid">Grid</button>
     <button id='create'>Create</button>
     <button id='onlyColor'>Color</button>
+    <button id='negative'>Negative</button>
+    <button id='neutral'>Neutral</button>
+    <button id='positive'>Positive</button>
     <%= form_for :global_map, url: global_map_path, method: :get do |f| %>
           <%= f.submit 'click Me' %>
     <% end %>
-
+  </div>
+  <div id="keywords">
+    <%= form_tag news_main_path, method: :get do %>
+      <%= hidden_field_tag :query, params[:query], value: 'weather' %>
+      <%= submit_tag 'Weather' %>
+    <% end %>
   </div>
 
   <%= form_tag news_main_path,

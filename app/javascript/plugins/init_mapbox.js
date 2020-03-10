@@ -58,7 +58,6 @@ const getCoordinates = (address) => {
   return fetch(url)
     .then(res => res.json())
     .then((data) => {
-      console.log(data.features[0].center);
       return data.features[0].center;
       // displayMap(data.features[0].center);
     });

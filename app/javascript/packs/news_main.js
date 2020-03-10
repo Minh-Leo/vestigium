@@ -8,6 +8,9 @@ console.log('begin on main');
 
 const searchButton = document.getElementById('submit-search-btn');
 const colorButton = document.getElementById('onlyColor');
+const negativeButton = document.getElementById('negative');
+const neutralButton = document.getElementById('neutral');
+const positiveButton = document.getElementById('positive');
 
 const searchForm = document.getElementById('search-field-div');
 const searchField = document.getElementById('search-field');
@@ -24,16 +27,16 @@ const newsSectionContainer = document.getElementById('news-section');
 // });
 
   // let articles = dataJson.length;
-  let radius;
-  if (dataJson.length <= 20) {
-    radius = 500;
-  } else if (dataJson.length <= 50) {
-    radius = 700;
-  } else if (dataJson.length <= 90) {
-    radius = 900;
-  } else {
-    radius = 1200;
-  }
+let radius;
+if (dataJson.length <= 20) {
+  radius = 500;
+} else if (dataJson.length <= 50) {
+  radius = 700;
+} else if (dataJson.length <= 90) {
+  radius = 900;
+} else {
+  radius = 1200;
+}
 
 
 let coorObject = {};
@@ -42,12 +45,13 @@ const analyzingArticles = async () => {
   // Promise.all here bc the async from slice.map return an array of promises, and promise.all catch them all and wait for them to finish
   let articles = await Promise.all(dataJson.slice(0, 120).map( async (el, index) => {
     el.sentiment = analyze(`${el.title} ${el.description} ${el.body}`);
-    let doc = nlp(`${el.body}`).match('#Place').text();
+    let places = nlp(`${el.body}`).match('#Place').text();
 
     // try catch here to catch exception in case there no location -> doesnt break the chain
-    if (doc) {
+    if (places) {
+      console.log(places);
       try {
-        el.coordinates = await getCoordinates(doc);
+        el.coordinates = await getCoordinates(places);
       } catch (e) {
         console.log('no location');
       }
@@ -67,13 +71,28 @@ const analyzingArticles = async () => {
   create3Dglobe(articles, radius);
 }
 
-colorButton.addEventListener('click', () => {
-  const allArticles = document.querySelectorAll('.element');
-  // console.log(allArticles);
-  allArticles.forEach(article => {
-    article.classList.toggle('onlyColor');
+
+// colorButton.addEventListener('click', () => {
+//   const allArticles = document.querySelectorAll('.element');
+//   console.log(allArticles.length);
+//   allArticles.forEach(article => {
+//     article.classList.toggle('onlyColor');
+//   });
+// });
+
+const assignButton = (button, s) => {
+  button.addEventListener('click', () => {
+    let allArticles = document.querySelectorAll(`.element${s}`);
+    console.log(allArticles.length);
+    allArticles.forEach(article => {
+      article.classList.toggle('onlyColor');
+    });
   });
-});
+};
+assignButton(colorButton, '');
+assignButton(negativeButton, '.negative');
+assignButton(neutralButton, '.neutral');
+assignButton(positiveButton, '.positive');
 // const showOnlyColor = () => {
 //   allArticles.style.width = 'unset';
 // };

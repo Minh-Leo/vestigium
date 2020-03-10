@@ -3,9 +3,10 @@ require 'open-uri'
 
 url = 'https://newsapi.org/v2/everything?language=en&sortBy=popularity&pageSize=80&page=1&sources='
 api_key = "apiKey=#{ENV['NEWS_API']}"
+date = [['05', '06'], ['07', '08'], ['09', '10'], ['11', '12']]
 timeframe = 'from=2020-03-05&to=2020-03-07'
 
-sources = %w[abc-news-au australian-financial-review news-com-au nbc-news cnn bloomberg fox-news espn techradar the-wall-street-journal reuters time bbc-news bbc-sport independent]
+sources = %w[abc-news-au australian-financial-review news-com-au nbc-news cnn fox-news espn techradar the-verge the-wall-street-journal reuters time bbc-news bbc-sport independent]
 
 puts 'begin'
 
