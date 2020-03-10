@@ -7,6 +7,8 @@ import nlp from 'compromise';
 console.log('begin on main');
 
 const searchButton = document.getElementById('submit-search-btn');
+const colorButton = document.getElementById('onlyColor');
+
 const searchForm = document.getElementById('search-field-div');
 const searchField = document.getElementById('search-field');
 const threeContainer = document.getElementById('three-container');
@@ -60,6 +62,17 @@ const analyzingArticles = async () => {
   threeContainer.innerHTML = '';
   create3Dglobe(articles, radius);
 }
+
+colorButton.addEventListener('click', () => {
+  const allArticles = document.querySelectorAll('.element');
+  console.log(allArticles);
+  allArticles.forEach(article => {
+    article.classList.toggle('onlyColor');
+  });
+});
+// const showOnlyColor = () => {
+//   allArticles.style.width = 'unset';
+// };
 
 analyzingArticles();
 

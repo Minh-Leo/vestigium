@@ -83,9 +83,13 @@
   text-align: center;
 }
 
+.onlyColor {
+  width: unset;
+}
+
 .element {
   width: 300px;
-  height: 340px;
+  height: 440px;
   padding: 10px;
   background: #fff;
   box-shadow: 0px 0px 12px #7b082877;
@@ -108,14 +112,6 @@
   border: 1px solid red;
   transform: scale(1.05);
 }
-
-  // .element .number {
-    // position: absolute;
-    // top: 20px;
-    // right: 20px;
-  //   font-size: 6px;
-  //   color: #7b082899;
-  // }
 
   .element .title {
     text-align: center;

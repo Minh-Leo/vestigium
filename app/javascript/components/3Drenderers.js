@@ -33,6 +33,7 @@ export const create3Dglobe = (data, radius) => {
       element.id = `news-card-${i}`;
       element.target = '_blank';
 
+      // Sentimental value display
       if (table[i].sentiment) {
         console.log('therere sentiment');
         if (table[i].sentiment < -5) {
@@ -77,7 +78,7 @@ export const create3Dglobe = (data, radius) => {
               <div class="modal-dialog" role="document">
                 <div class="modal-content">
                   <div class="modal-header">
-                    <h4 class="modal-title" id="exampleModalLabel">${table[i].title}</h4>
+                    <h4 class="modal-title" id="exampleModalLabel">${table[i].title}, id:${table[i].id} </h4>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                       <span aria-hidden="true">&times;</span>
                     </button>
@@ -182,12 +183,12 @@ export const create3Dglobe = (data, radius) => {
 
     }, false );
 
-    var button = document.getElementById( 'grid' );
-    button.addEventListener( 'click', function () {
+    // var button = document.getElementById( 'grid' );
+    // button.addEventListener( 'click', function () {
 
-      transform( targets.grid, 2000 );
+    //   transform( targets.grid, 2000 );
 
-    }, false );
+    // }, false );
 
     transform( targets.sphere, 2000 );
 
