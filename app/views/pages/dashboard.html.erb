@@ -27,15 +27,10 @@
               </div>
 
               <div class="favorite-note-div">
-                <%= simple_form_for([article, favorite]) do |f| %>
+                <%= simple_form_for(favorite) do |f| %>
                   <%= f.input :note %>
-                  <%= link_to "Create", article_favorites_path, method: :post %>
+                  <%= f.submit "add note", method: :patch %>
                 <% end %>
-              </div>
-
-              <div class="favorite-note">
-                <%= link_to "Note", new_article_favorite_path(favorite.article),
-                :class => "favorite-note-button" %>
               </div>
 
               <div class="favorite-article">
