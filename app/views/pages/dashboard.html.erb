@@ -2,7 +2,7 @@
   <div class="row">
 
     <div class="col-md-3" id="left-col">
-      <%= image_tag current_user.photo, :id => "dashboard-avatar-img" %>
+      <%# image_tag current_user.photo, :id => "dashboard-avatar-img" %>
       <div id="dashboard-avatar-name">
       <h3><%= current_user.first_name + " " + current_user.last_name %></h3>
       <h5><%= current_user.email %> </h5>
@@ -14,39 +14,61 @@
     </div>
 
     <div class="col-md-9">
-       <h2 id="favorite-title">Favorites</h2>
-        <div class="favorites-list">
-          <% @favorites.each do |favorite| %>
+      <h2 id="favorite-title">Favorites</h2>
+      <ul class="favorites-list" id="favorite-container">
+      <!-- <div class="favorites-list"> -->
+        <% @favorites.each do |favorite| %>
+          <li class="favorite">
 
-            <div class="favorite">
+            <div class="favorite-delete-div">
+              <%= link_to "X ", favorite_path(favorite),
+                  method: :delete, :class => "favorite-delete-button",
+                  data: { confirm: "Are you sure?" } %>
+            </div>
 
-              <div class="favorite-delete-div">
-                <%= link_to "X ", favorite_path(favorite),
-                    method: :delete, :class => "favorite-delete-button",
-                    data: { confirm: "Are you sure?" } %>
+            <div class="favorite-note-div">
+              <%= simple_form_for(favorite) do |f| %>
+                <%= f.input :note, as: :text, autofocus: true,
+                :input_html => {:style => 'width: 100%', :rows => 5,
+                :class => "js-note-field", :id => "#{favorite.id}", "data-patch-url": favorite_path(favorite) } %>
+              <% end %>
+            </div>
+
+            <div class="favorite-article">
+              <div class="favorite-article-div">
+                <%= image_tag favorite.article.image_url, :class => "favorite-article-img" %>
               </div>
 
-              <div class="favorite-note-div">
-                <%= simple_form_for(favorite) do |f| %>
-                  <%= f.input :note, as: :text, autofocus: true,
-                  :input_html => {:style => 'width: 100%', :rows => 5,
-                  :class => "js-note-field", :id => "#{favorite.id}", "data-patch-url": favorite_path(favorite) } %>
-                <% end %>
-              </div>
-
-              <div class="favorite-article">
-                <div class="favorite-article-div">
-                  <%= image_tag favorite.article.image_url, :class => "favorite-article-img" %>
-                </div>
-
-                <div>
-                  <%= link_to "#{favorite.article.title}", favorite.article.url %>
-                </div>
+              <div class="favorite-link">
+                <p> <%= link_to "#{favorite.article.title}", favorite.article.url %></p>
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal<%= favorite.id %>">
+                  Add to list!
+                </button>
               </div>
             </div>
-          <% end %>
+          </li>
+          <%= render partial: "add_to_list", locals: { favorite: favorite } %>
+        <% end %>
+      </ul>
+    </div>
+
+    <div class="list-container">
+      <h2>My Lists</h2>
+      <%= simple_form_for(List.new, method: :post, url: lists_path) do |f| %>
+        <%= f.input :name %>
+        <%= f.submit 'Create list'%>
+        <%= link_to "All done!", dashboard_path%>
+      <% end %>
+      <br>
+      <%= @lists.each do |list| %>
+        <div class="list-created">
+          <ul>
+            <%= list.favorites.each do |fav| %>
+              <li><%= fav.article.title %></li>
+            <% end %>
+          </ul>
         </div>
-      </div>
+      <% end %>
     </div>
   </div>
 </div>

@@ -1,0 +1,25 @@
+<!-- Modal -->
+<div class="modal fade" id="exampleModal<%= favorite.id %>" tabindex="-1" role="dialog" aria-labelledby="exampleModal<%= favorite.id %>Label" aria-hidden="true">
+<div class="modal-dialog" role="document">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h5 class="modal-title" id="exampleModalLabel">Which list do you want to add it to?</h5>
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <!-- create a form which shows the list option -->
+      <%= simple_form_for FavoriteList.new do |f| %>
+        <%= f.input :list_id, as: :select, collection: List.where(user: current_user) %>
+        <%= f.input :favorite_id, as: :hidden, :input_html => { :value => favorite.id } %>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-primary">
+        <%= f.submit "Add to List" %>
+      </button>
+      <% end %>
+    </div>
+  </div>
+</div>
+</div>
