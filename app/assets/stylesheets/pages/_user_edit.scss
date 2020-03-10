@@ -1,0 +1,28 @@
+.submit-button {
+  background-color: black;
+  padding: 10px 15px;
+  border-radius: 5px;
+  border: 1px solid gray;
+  color: #FFEDED;
+}
+
+.submit-button:hover {
+  background-color: #393D3F;
+  color: #FFEDED;
+}
+
+.submit-img {
+  color: red;
+  background-color: blue;
+}
+
+.form-styling {
+  border: 1px solid red;
+}
+
+#edit-user-avatar {
+height: 240px;
+  margin-top: 30px;
+  border-radius: 50%;
+  border: 1px solid gray;
+}

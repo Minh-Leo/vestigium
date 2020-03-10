@@ -1,3 +1,13 @@
-<h1>Users#edit</h1>
-<%= render partial: "user_form"%>
-<p>Find me in app/views/users/edit.html.erb</p>
+<div class="container d-flex justify-content-center">
+  <div class="col-md-6">
+    <div class="d-flex align-items-center flex-column">
+      <div>
+        <%= image_tag current_user.photo, :id => "edit-user-avatar" %>
+      </div>
+      <div>
+        <h1 class="mt-4">Edit your profile</h1>
+      </div>
+    </div>
+    <%= render partial: "user_form"%>
+  </div>
+</div>

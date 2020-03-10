@@ -1,5 +1,5 @@
 class FavoritesController < ApplicationController
-  before_action :set_favorite, only: %i[show edit destroy]
+  before_action :set_favorite, only: %i[show edit destroy update]
 
   def new
     @article = Article.find(params[:article_id])
@@ -14,6 +14,11 @@ class FavoritesController < ApplicationController
     redirect_to dashboard_path
   end
 
+  def update
+    @favorite.update(favorite_params)
+    # redirect_to dashboard_path
+  end
+
   def edit; end
 
   def show; end
@@ -23,6 +28,10 @@ class FavoritesController < ApplicationController
   end
 
   private
+
+  def favorite_params
+    params.permit(:note)
+  end
 
   def set_favorite
     @favorite = Favorite.find(params[:id])
