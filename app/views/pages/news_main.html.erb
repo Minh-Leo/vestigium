@@ -7,6 +7,9 @@
     <button id="grid">Grid</button>
     <button id='create'>Create</button>
     <button id='onlyColor'>Color</button>
+    <%= form_for :global_map, url: global_map_path, method: :get do |f| %>
+          <%= f.submit 'click Me' %>
+    <% end %>
 
   </div>
 

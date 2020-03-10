@@ -52,12 +52,16 @@ const analyzingArticles = async () => {
         console.log('no location');
       }
     }
-
-    // console.log('in the loop', el);
     return el;
   }));
-  console.log(articles);
 
+  let map_articles = [];
+  articles.forEach(el => {
+      if (el.coordinates) {
+        map_articles.push({ title: el.title, image_url:el.image_url, url: el.url, coor: el.coordinates });
+      }
+    });
+  window.localStorage.setItem('myMapData', JSON.stringify(map_articles));
 
   threeContainer.innerHTML = '';
   create3Dglobe(articles, radius);
@@ -65,7 +69,7 @@ const analyzingArticles = async () => {
 
 colorButton.addEventListener('click', () => {
   const allArticles = document.querySelectorAll('.element');
-  console.log(allArticles);
+  // console.log(allArticles);
   allArticles.forEach(article => {
     article.classList.toggle('onlyColor');
   });
