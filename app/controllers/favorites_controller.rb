@@ -16,7 +16,7 @@ class FavoritesController < ApplicationController
 
   def update
     @favorite.update(favorite_params)
-    redirect_to dashboard_path
+    # redirect_to dashboard_path
   end
 
   def edit; end
@@ -30,7 +30,7 @@ class FavoritesController < ApplicationController
   private
 
   def favorite_params
-    params.require(:favorite).permit(:note)
+    params.permit(:note)
   end
 
   def set_favorite

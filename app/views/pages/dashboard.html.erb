@@ -28,8 +28,9 @@
 
               <div class="favorite-note-div">
                 <%= simple_form_for(favorite) do |f| %>
-                  <%= f.input :note %>
-                  <%= f.submit "add note", method: :patch %>
+                  <%= f.input :note, as: :text, autofocus: true,
+                  :input_html => {:style => 'width: 100%', :rows => 5,
+                  :class => "js-note-field", :id => "#{favorite.id}", "data-patch-url": favorite_path(favorite) } %>
                 <% end %>
               </div>
 
