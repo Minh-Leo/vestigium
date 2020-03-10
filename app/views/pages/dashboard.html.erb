@@ -1,47 +1,56 @@
 <div class="container">
-  <h1>Dashboard</h1>
+  <div class="row">
 
-   <%= image_tag current_user.photo, :id => "dashboard-avatar-img" %>
-
-  <h3>Favorites</h3>
-
-  <div id="favorite-container">
-    <div class="favorite-header">
-      <div class="favorite-header-text">
-        <p>Image</p>
+    <div class="col-md-3" id="left-col">
+      <%= image_tag current_user.photo, :id => "dashboard-avatar-img" %>
+      <div id="dashboard-avatar-name">
+      <h3><%= current_user.first_name + " " + current_user.last_name %></h3>
+      <h5><%= current_user.email %> </h5>
+      <h5><%= current_user.address %> </h5>
+      <h6>You have <%= @favorites.size  %> favorites</h6>
       </div>
-      <div class="favorite-header-text">
-        <p>Link</p>
-      </div>
-      <div class="favorite-header-text">
-        <p>Note</p>
-      </div>
-      <div class="favorite-note-div">
-        <p>Rating</p>
-      </div>
+      <%= link_to "Edit profile", edit_user_path(current_user),
+      :id => "edit-profile-button" %>
     </div>
 
-    <% @favorites.each do |favorite| %>
-      <div class="favorite">
-        <div class="favorite-article-div">
-          <%= image_tag favorite.article.image_url, :class => "favorite-article-img" %>
-        </div>
-        <div class="favorite-link-div">
-          <%= link_to "#{favorite.article.title}", favorite.article.url %>
-        </div>
-        <div class="favorite-note-div">
-          <p><%= favorite.note %></p>
-        </div>
-        <div class="favorite-note">
-          <%= link_to "Note", new_article_favorite_path(favorite.article),
-          :class => "favorite-note-button" %>
-        </div>
-        <div class="favorite-delete-div">
-          <%= link_to "Delete", favorite_path(favorite),
-              method: :delete, :class => "favorite-delete-button",
-              data: { confirm: "Are you sure?" } %>
+    <div class="col-md-9">
+       <h2 id="favorite-title">Favorites</h2>
+        <div class="favorites-list">
+          <% @favorites.each do |favorite| %>
+
+            <div class="favorite">
+
+              <div class="favorite-delete-div">
+                <%= link_to "X ", favorite_path(favorite),
+                    method: :delete, :class => "favorite-delete-button",
+                    data: { confirm: "Are you sure?" } %>
+              </div>
+
+              <div class="favorite-note-div">
+                <%= simple_form_for([article, favorite]) do |f| %>
+                  <%= f.input :note %>
+                  <%= link_to "Create", article_favorites_path, method: :post %>
+                <% end %>
+              </div>
+
+              <div class="favorite-note">
+                <%= link_to "Note", new_article_favorite_path(favorite.article),
+                :class => "favorite-note-button" %>
+              </div>
+
+              <div class="favorite-article">
+                <div class="favorite-article-div">
+                  <%= image_tag favorite.article.image_url, :class => "favorite-article-img" %>
+                </div>
+
+                <div>
+                  <%= link_to "#{favorite.article.title}", favorite.article.url %>
+                </div>
+              </div>
+            </div>
+          <% end %>
         </div>
       </div>
-    <% end %>
+    </div>
   </div>
 </div>
