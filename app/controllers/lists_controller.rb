@@ -7,9 +7,14 @@ class ListsController < ApplicationController
   def create
     @list = List.new
     @list.user = current_user
-    @list.name = params["list"][:name]
-    @list.save!
-    redirect_to dashboard_path
+    if params["list"][:name]
+      @list.name = params["list"][:name]
+    end
+    if @list.save
+      redirect_to dashboard_path
+    else
+      redirect_to dashboard_path
+    end
   end
 
   def edit

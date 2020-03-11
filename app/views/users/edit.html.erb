@@ -2,7 +2,11 @@
   <div class="col-md-6">
     <div class="d-flex align-items-center flex-column">
       <div>
-        <%= image_tag current_user.photo, :id => "edit-user-avatar" %>
+        <% if current_user.photo.attached? %>
+        <%= image_tag current_user.photo, id: "edit-user-avatar" %>
+      <% else %>
+        <%= cl_image_tag 'https://res.cloudinary.com/dvbejvnhk/image/upload/v1583824016/avatar_if7whz.png', id: "edit-user-avatar" %>
+      <% end %>
       </div>
       <div>
         <h1 class="mt-4">Edit your profile</h1>

@@ -14,6 +14,5 @@ class FavoriteListsController < ApplicationController
     @favorite_list.save!
     # 6. redirect to dashboard path
     redirect_to dashboard_path
-    raise
   end
 end
