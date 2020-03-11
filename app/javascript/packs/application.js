@@ -11,5 +11,5 @@ import { initMapbox } from '../plugins/init_mapbox';
 import { initNotes } from '../plugins/init_notes';
 
 initMapbox();
-initNotes();
+// initNotes();
 // initSortable();

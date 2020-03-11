@@ -24,6 +24,7 @@ class FavoritesController < ApplicationController
   def show; end
 
   def destroy
+    raise
     @favorite.destroy
   end
 
