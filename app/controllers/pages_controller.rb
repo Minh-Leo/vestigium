@@ -11,7 +11,9 @@ class PagesController < ApplicationController
   end
 
   def dashboard
-    @favorites = Favorite.where(user: current_user)
+    @favorites = current_user.favorites
+    @lists = current_user.lists
+    @favorite_lists = current_user.favorite_lists
   end
 
   def news_main

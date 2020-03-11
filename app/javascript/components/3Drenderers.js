@@ -94,7 +94,7 @@ export const create3Dglobe = (data, radius) => {
                   </div>
 
                   <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <a href="articles/${table[i].id}/favorites/new" type="button" class="btn btn-secondary">Add to favorite</a>
                     <button type="button" class="btn btn-success"><a href='${table[i].url}' target='_blank'>Read me</a></button>
                   </div>
                 </div>
