@@ -12,4 +12,4 @@ import { initNotes } from '../plugins/init_notes';
 
 initMapbox();
 initNotes();
-initSortable();
+// initSortable();
