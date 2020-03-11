@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-
+    <div class="col-md-3"></div>
     <div class="col-md-3" id="left-col">
       <% if current_user.photo.attached? %>
         <%= image_tag current_user.photo, id: "dashboard-avatar-img" %>
@@ -29,10 +29,10 @@
           <li class="favorite">
 
             <div class="favorite-delete-div">
-              <%= link_to "X ", favorite_path(favorite),
-                  method: :delete, :class => "favorite-delete-button",
-                  data: { confirm: "Are you sure?" } %>
-            </div>
+                <%= link_to '<i class="fas fa-times-circle"></i>'.html_safe,
+                  favorite_path(favorite),
+                  method: :delete, :class => "favorite-delete-button" %>
+              </div>
 
             <div class="favorite-note-div">
               <%= simple_form_for(favorite) do |f| %>
@@ -59,8 +59,11 @@
         <% end %>
       </ul>
     </div>
+  </div>
 
-    <div class="list-container">
+  <div class="row">
+    <div class="col-md-3"></div>
+    <div class="list-container col-md-9">
       <h2>My Lists</h2>
       <%= simple_form_for(List.new, method: :post, url: lists_path) do |f| %>
         <%= f.input :name %>
