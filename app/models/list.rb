@@ -3,4 +3,6 @@ class List < ApplicationRecord
   has_many :favorite_lists
   has_many :favorites, through: :favorite_lists
 
+  validates :name, presence: true
+
 end

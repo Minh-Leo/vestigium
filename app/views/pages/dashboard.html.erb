@@ -2,11 +2,19 @@
   <div class="row">
     <div class="col-md-3"></div>
     <div class="col-md-3" id="left-col">
-      <%= image_tag current_user.photo, :id => "dashboard-avatar-img" %>
+      <% if current_user.photo.attached? %>
+        <%= image_tag current_user.photo, id: "dashboard-avatar-img" %>
+      <% else %>
+        <%= cl_image_tag 'https://res.cloudinary.com/dvbejvnhk/image/upload/v1583824016/avatar_if7whz.png', id: "dashboard-avatar-img" %>
+      <% end %>
       <div id="dashboard-avatar-name">
-      <h3><%= current_user.first_name + " " + current_user.last_name %></h3>
-      <h5><%= current_user.email %> </h5>
-      <h5><%= current_user.address %> </h5>
+      <% if current_user.first_name && current_user.last_name %>
+        <h3><%= current_user.first_name + " " + current_user.last_name %></h3>
+      <% end %>
+      <% if current_user.address %>
+        <h5><%= current_user.address %> </h5>
+      <% end %>
+      <h5><%= current_user.email %></h5>
       <h6>You have <%= @favorites.size  %> favorites</h6>
       </div>
       <%= link_to "Edit profile", edit_user_path(current_user),
@@ -60,18 +68,19 @@
       <%= simple_form_for(List.new, method: :post, url: lists_path) do |f| %>
         <%= f.input :name %>
         <%= f.submit 'Create list'%>
-        <%= link_to "All done!", dashboard_path%>
       <% end %>
       <br>
-      <%= @lists.each do |list| %>
+      <% @lists.each do |list| %>
         <div class="list-created">
+          <h3><%= list.name %></h3>
           <ul>
-            <%= list.favorites.each do |fav| %>
+            <% list.favorites.each do |fav| %>
               <li><%= fav.article.title %></li>
             <% end %>
           </ul>
         </div>
       <% end %>
     </div>
+
   </div>
 </div>

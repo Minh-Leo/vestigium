@@ -25,6 +25,7 @@ class FavoritesController < ApplicationController
 
   def destroy
     @favorite.destroy
+    redirect_to dashboard_path
   end
 
   private
