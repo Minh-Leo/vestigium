@@ -1,25 +1,74 @@
 .news-section {
   position: relative;
   height: calc(100vh - 60px);
-}
 
-#search-field-div {
-  position: absolute;
-  top: 60px;
-  left: 20%;
-  z-index: 10;
-
-  input {
-    background: transparent;
-
+  &:before {
+    content: '';
+    background: url('https://res.cloudinary.com/thetravelusts/image/upload/v1583930872/Vestigium/17580_ncdjfk.jpg');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 1;
   }
 }
 
-.news-container {
-  width: 34%;
-  position: relative;
+#loading-screen {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  // transform: translate(-50%, -50%);
+  background: url('https://res.cloudinary.com/thetravelusts/image/upload/v1583891238/Vestigium/loadingRadar_ccf3ma.gif');
+  // background-position: center;
+  // background-repeat: no-repeat;
+  display: none;
+  z-index: 10;
 }
 
+#search-field-div {
+  // display: flex;
+  // width: 300px;
+  position: relative;
+  // top: 60px;
+  // left: 10%;
+  // z-index: 10;
+
+  input {
+    background: transparent;
+  }
+}
+
+// Added by Nikolai
+#search-field {
+    background-color: #fff;
+    border: none;
+    border-bottom: 5px solid #091f2f;
+    border-radius: 0;
+    color: black;
+    font-family: $body-font;
+    font-size: 20px;
+    height: 70%;
+    letter-spacing: -1px;
+    line-height: 1.3;
+    padding: 0 50px 0 0;
+    width: 100%;
+    outline: none;
+}
+
+.corner-left {
+  border-bottom-left-radius: 10px;
+}
+.corner-right {
+  border-top-right-radius: 10px;
+}
+.btn-map {
+  border-bottom-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
 
 // Globe css
 .globe-container {
@@ -31,41 +80,22 @@
   background-repeat: no-repeat;
 }
 
-.tags-container {
+.keywords-container {
+  width: 300px;
+  height: 300px;
+  background: black;
   display: flex;
-  justify-content: space-between;
-  width: 100%;
-  height: 50px;
+  justify-content: space-around;
   position: absolute;
   top: 80%;
+  right: 10px;
 
-  .tag {
+  .keyword {
     display: block;
-    height: 50px;
-    width: 100px;
-    border: 1px solid black;
-    background: red;
-  }
-
-  .left-tag {
-
-  }
-
-  .right-tag {
-
+    background: transparent;
+    color: red;
   }
 }
-
-.keywords-container {
-  display: flex;
-  background: red;
-  width: 100%;
-  height: 50px;
-  position: absolute;
-  left: 0;
-  bottom: 0;
-}
-
 
 
 // 3D css
@@ -77,17 +107,23 @@
 }
 
 #three-menu {
+  display: flex;
+  justify-content: center;
   position: absolute;
   bottom: 20px;
   width: 100%;
   text-align: center;
 }
 
+.onlyColor {
+  width: 0px !important;
+}
+
 .element {
   width: 300px;
   height: 340px;
   padding: 10px;
-  background-color: rgba(#ffffff, 0.8);
+  background: #fff;
   box-shadow: 0px 0px 12px #7b082877;
   border: 1px solid #7b082877;
   border-bottom-left-radius: 50% 10%;
@@ -100,6 +136,7 @@
   cursor: default;
   overflow: hidden;
   position: relative;
+  transition: width 1s ease;
 }
 
 .element:hover {
@@ -108,62 +145,36 @@
   border: 1px solid red;
 }
 
-  // .element .number {
-    // position: absolute;
-    // top: 20px;
-    // right: 20px;
-  //   font-size: 6px;
-  //   color: #7b082899;
-  // }
-
-  .element .title {
-    text-align: center;
-    position: absolute;
-    top: 30px;
-    left: 10px;
-    font-size: 12px;
-    font-weight: bold;
-    color: #7b082877;
-    text-shadow: 0 0 10px #7b082877;
-  }
-
-  .element .image {
-    position: absolute;
-    top: 70px;
-    left: 10px;
-    width: 90%;
-  }
-
-  .element .url {
-    position: absolute;
-    bottom: 10px;
-    left: 10px;
-    font-size: 14px;
-    color: #000;
-  }
-
-  .element .details {
-    position: absolute;
-    bottom: 30px;
-    left: 10px;
-    font-size: 10px;
-    color: #7b082877;
-  }
-
-button {
-  color: red;
-  background: transparent;
-  outline: 1px solid red;
-  border: 0px;
-  padding: 5px 10px;
-  cursor: pointer;
+.element .title {
+  text-align: center;
+  position: absolute;
+  top: 30px;
+  left: 0px;
+  font-size: 12px;
+  font-weight: bold;
+  color: #7b082877;
+  text-shadow: 0 0 10px #7b082877;
 }
 
-button:hover {
-  background-color: rgba(0,255,255,0.5);
+.element .image {
+  position: absolute;
+  top: 70px;
+  left: 0px;
+  width: 90%;
 }
 
-button:active {
-  color: #000000;
-  background-color: rgba(0,255,255,0.75);
+.element .url {
+  position: absolute;
+  bottom: 10px;
+  left: 0px;
+  font-size: 14px;
+  color: #000;
+}
+
+.element .details {
+  position: absolute;
+  bottom: 30px;
+  left: 0px;
+  font-size: 10px;
+  color: #7b082877;
 }

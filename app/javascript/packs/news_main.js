@@ -1,19 +1,99 @@
 import { getArticles } from '../components/data';
 import { create3Dglobe } from "../components/3Drenderers";
+import { analyze } from '../components/sentiment';
+import { getCoordinates } from '../plugins/init_mapbox';
+import nlp from 'compromise';
 
 console.log('begin on main');
 
 const searchButton = document.getElementById('submit-search-btn');
+const colorButton = document.getElementById('onlyColor');
+const negativeButton = document.getElementById('negative');
+const neutralButton = document.getElementById('neutral');
+const positiveButton = document.getElementById('positive');
+
 const searchForm = document.getElementById('search-field-div');
 const searchField = document.getElementById('search-field');
 const threeContainer = document.getElementById('three-container');
 const newsSectionContainer = document.getElementById('news-section');
+const loadingScreen = document.getElementById('loading-screen');
 
-searchForm.addEventListener('submit', (e) => {
-  e.preventDefault();
+let radius;
+if (dataJson.length <= 20) {
+  radius = 500;
+} else if (dataJson.length <= 50) {
+  radius = 700;
+} else if (dataJson.length <= 90) {
+  radius = 900;
+} else {
+  radius = 1200;
+}
 
-  let articles = dataJson.slice(0, 120);
+
+const analyzingArticles = async () => {
+  loadingScreen.style.display = 'block';
+
+  // Promise.all here bc the async from slice.map return an array of promises, and promise.all catch them all and wait for them to finish
+  let articles = await Promise.all(dataJson.slice(0, 120).map( async (el, index) => {
+    el.sentiment = analyze(`${el.title} ${el.description} ${el.body}`);
+    console.log(el.sentiment, typeof(el.sentiment));
+    let places = nlp(`${el.body}`).match('#Place').text();
+
+    // try catch here to catch exception in case there no location -> doesnt break the chain
+    if (places) {
+      try {
+        el.coordinates = await getCoordinates(places);
+      } catch (e) {
+        console.log('no location');
+      }
+    }
+    return el;
+  }));
+
+  let map_articles = [];
+  articles.forEach(el => {
+      if (el.coordinates) {
+        map_articles.push({ title: el.title, image_url:el.image_url, url: el.url, coor: el.coordinates });
+      }
+    });
+  window.localStorage.setItem('myMapData', JSON.stringify(map_articles));
+
   threeContainer.innerHTML = '';
-  console.log(searchField.value);
-  create3Dglobe(articles, 1200);
-});
+  create3Dglobe(articles, radius);
+  loadingScreen.style.display = 'none';
+}
+
+
+const assignButton = (button, cName) => {
+  button.addEventListener('click', () => {
+    let allArticles = document.querySelectorAll(`.element${cName}`);
+    console.log(allArticles.length);
+    allArticles.forEach(article => {
+      article.classList.toggle('onlyColor');
+    });
+  });
+};
+assignButton(colorButton, '');
+assignButton(negativeButton, '.negative');
+assignButton(neutralButton, '.neutral');
+assignButton(positiveButton, '.positive');
+
+analyzingArticles();
+
+
+// dataJson.slice(0, 120).forEach( (el, index) => {
+//     el.sentiment = analyze(`${el.title} ${el.description} ${el.body}`);
+    // console.log(el.sentiment);
+    // console.log(el.title);
+    // console.log(el)
+    // let doc = nlp(`${el.body}`);
+    // let coor = await getCoordinates(doc.match('#Place').text());
+    // console.log(coor, 'enddd', el.sentiment, index);
+  // })
+
+
+// const getAddress = () => {
+//   let doc = nlp(`${el.body}`);
+    // let coor = await getCoordinates(doc.match('#Place').text());
+    // console.log(coor, 'enddd', el.sentiment, index);
+// }

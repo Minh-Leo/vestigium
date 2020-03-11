@@ -2,7 +2,13 @@ class Article < ApplicationRecord
   after_initialize :set_defaults
 
   include PgSearch::Model
-  multisearchable against: [:title, :description]
+  pg_search_scope :search_by_title_and_description,
+  against: [ :title, :description, :body],
+  using: {
+    tsearch: { prefix: true }
+  }
+
+  # multisearchable against: [:title, :description]
 
   validates :title, :url, :publish_time, presence: true
   belongs_to :source

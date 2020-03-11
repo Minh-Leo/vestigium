@@ -1,5 +1,4 @@
 import * as THREE from 'three';
-
 import { TWEEN } from 'three/examples/jsm/libs/tween.module.min';
 import { TrackballControls } from 'three/examples/jsm/controls/TrackballControls';
 import { CSS3DRenderer, CSS3DObject } from 'three/examples/jsm/renderers/CSS3DRenderer';
@@ -10,7 +9,6 @@ const modalsContainer = document.getElementById('modals-container');
 
 export const create3Dglobe = (data, radius) => {
   var table = data;
-  // console.log(table);
   var camera, scene, renderer;
   var controls;
 
@@ -34,8 +32,24 @@ export const create3Dglobe = (data, radius) => {
       element.id = `news-card-${i}`;
       element.target = '_blank';
 
-      // element.addEventListener('click',() => {
-      //   window.location.replace(url.innerText)});
+      // Sentimental value display
+      if (table[i].sentiment !== null) {
+        console.log('therere sentiment');
+
+        if (table[i].sentiment <= -5) {
+          element.style.border = `10px solid #DD0000`;
+          element.classList.add('negative');
+        } else if (table[i].sentiment > -5 && table[i].sentiment <= 2) {
+          element.style.border = `10px solid #FFF000`;
+          element.classList.add('neutral');
+        } else if (table[i].sentiment > 2) {
+          element.style.border = `10px solid #087E8B`;
+          element.classList.add('positive');
+        }
+      } else {
+        element.style.border = `none`;
+      }
+
       // element.style.backgroundColor = `rgba(255,255,255, ${(Math.random() * (1 - 0.7) + 0.7).toFixed(2)})`;
 
       var title = document.createElement( 'div' );
@@ -134,7 +148,7 @@ export const create3Dglobe = (data, radius) => {
 
       object.position.x = ( ( i % 5 ) * 400 ) - 800;
       object.position.y = ( - ( Math.floor( i / 5 ) % 5 ) * 400 ) + 800;
-      object.position.z = ( Math.floor( i / 25 ) ) * 1000 - 2000;
+      object.position.z = ( Math.floor( i / 25 ) ) * 1000 - 0;
 
       targets.grid.push( object );
     }

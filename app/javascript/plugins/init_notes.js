@@ -5,9 +5,7 @@
 export const initNotes = () => {
   const noteFieldEls = document.querySelectorAll(".js-note-field");
 
-
-
-  console.log(noteFieldEls)
+  // console.log(noteFieldEls)
 
   const sendAjaxRecuest = (url, noteValue) => {
     Rails.ajax({
@@ -15,7 +13,7 @@ export const initNotes = () => {
       type: "PATCH",
       data: `note=${noteValue}`,
       success: function(data) {
-        console.log(data);
+        // console.log(data);
       }
     });
   };

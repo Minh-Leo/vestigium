@@ -1,47 +1,64 @@
 <div class="main-home-container news-section">
+  <div id="loading-screen"></div>
 
   <div id="three-container"></div>
-    <div id="three-menu">
-      <button id="table">Spot</button>
-      <button id="sphere">Sphere</button>
-      <!-- <button id="grid">GRID</button> -->
-      <button id='create'>Create</button>
+
+
+  <div id="three-menu">
+    <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+      <div class="btn-group mr-2" role="group" aria-label="First group">
+        <button id="table" class="btn btn-secondary corner-left">Spot</button>
+        <button id="sphere" class="btn btn-secondary">Sphere</button>
+        <!-- <button id="grid">Grid</button> -->
+        <button id='onlyColor' class="btn btn-secondary corner-right">Color</button>
+      </div>
+      <div class="btn-group mr-2" role="group" aria-label="Second group">
+         <button id='negative' class="btn btn-secondary corner-left">Negative</button>
+        <button id='neutral' class="btn btn-secondary">Neutral</button>
+        <button id='positive' class="btn btn-secondary corner-right">Positive</button>
+      </div>
     </div>
 
-  <%= form_tag news_main_path,
-    class: 'row search-bar-container',
-    id: 'search-field-div',
-    method: :get do %>
-    <%= text_field_tag :query,
-      params[:query],
-      class: "form-control search-input",
-      id: 'search-field',
-      placeholder: "Find a keyword"
-    %>
-    <span class="input-group-btn">
-      <i class="fas fa-search"><%= submit_tag "", class: "btn-dark search-btn", id: "submit-search-btn" %></i>
-    </span>
-  <% end %>
+    <div class="btn-group mr-3" role="group" aria-label="Third group">
+      <%= form_for :global_map, url: global_map_path, method: :get do |f| %>
+            <%= f.submit 'Let go to space', class: 'btn btn-secondary btn-map' %>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="search-card">
+    <%= form_tag news_main_path,
+      class: '',
+      id: 'search-field-div',
+      method: :get do %>
+      <%= text_field_tag :query,
+        params[:query],
+        class: "form-control search-input",
+        id: 'search-field',
+        placeholder: "Find a keyword"
+      %>
+      <span class="input-group-btn">
+        <%= button_tag 'search', class: " search-btn", id: "submit-search-btn" do %>
+        <i class="fas fa-search"></i>
+        <% end %>
+      </span>
+    <% end %>
+
+     <div>
+      <%= form_tag news_main_path, class: 'keyword', method: :get do %>
+        <% @keywords.each do |word| %>
+          <%= button_tag :query, class: 'keyword-btn', value: word, name: 'query' do %> <%= word %> <% end %>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
 
   <div id="modals-container"></div>
 
-   <!--  <div class="tags-container">
-      <a href="#" class="tag left-tag">
-        Previous
-      </a>
-      <a href="#" class="tag right-tag">
-        Next
-      </a>
-    </div>
-  </div> -->
 </div>
-
-
-
 
 
 <script>
   let dataJson = <%= @articles %>;
 </script>
-
 <%= javascript_pack_tag 'news_main' %>
