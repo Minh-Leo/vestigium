@@ -33,7 +33,7 @@ export const create3Dglobe = (data, radius) => {
       element.target = '_blank';
 
       // Sentimental value display
-      if (table[i].sentiment) {
+      if (table[i].sentiment !== null) {
         console.log('therere sentiment');
 
         if (table[i].sentiment <= -5) {
@@ -184,12 +184,12 @@ export const create3Dglobe = (data, radius) => {
 
     }, false );
 
-    var button = document.getElementById( 'grid' );
-    button.addEventListener( 'click', function () {
+    // var button = document.getElementById( 'grid' );
+    // button.addEventListener( 'click', function () {
 
-      transform( targets.grid, 2000 );
+    //   transform( targets.grid, 2000 );
 
-    }, false );
+    // }, false );
 
     transform( targets.sphere, 2000 );
 

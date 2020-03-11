@@ -1,5 +1,6 @@
-#news-section {
+.news-section {
   position: relative;
+  height: calc(100vh - 60px);
 }
 
 #modals-container {
