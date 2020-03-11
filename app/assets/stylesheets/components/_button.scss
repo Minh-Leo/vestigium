@@ -13,6 +13,14 @@
   margin-top: 5px;
 }
 
+.btn-secondary {
+  background: #000;
+  color: white;
+
+  &:hover {
+    background: red;
+  }
+}
 
 button {
   color: red;
