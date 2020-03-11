@@ -57,7 +57,6 @@
       <%= simple_form_for(List.new, method: :post, url: lists_path) do |f| %>
         <%= f.input :name %>
         <%= f.submit 'Create list'%>
-        <%= link_to "All done!", dashboard_path%>
       <% end %>
       <br>
       <%= @lists.each do |list| %>

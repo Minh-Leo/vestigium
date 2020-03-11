@@ -9,6 +9,7 @@ class ListsController < ApplicationController
     @list.user = current_user
     @list.name = params["list"][:name]
     @list.save!
+    redirect_to dashboard_path
   end
 
   def edit
