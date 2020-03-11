@@ -16,17 +16,18 @@
 }
 
 #search-field-div {
-  display: flex;
-  width: 300px;
-  position: absolute;
-  top: 60px;
-  left: 10%;
-  z-index: 10;
+  // display: flex;
+  // width: 300px;
+  position: relative;
+  // top: 60px;
+  // left: 10%;
+  // z-index: 10;
 
   input {
     background: transparent;
   }
 }
+
 // Added by Nikolai
 #search-field {
     background-color: #fff;
@@ -67,8 +68,6 @@
 
   .keyword {
     display: block;
-    // height: 30px;
-    // width: 60px;
     background: transparent;
     color: red;
   }
@@ -83,13 +82,9 @@
   // border: 2px solid red;
 }
 
-#keywords {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-}
-
 #three-menu {
+  display: flex;
+  justify-content: center;
   position: absolute;
   bottom: 20px;
   width: 100%;
@@ -126,55 +121,36 @@
   border: 1px solid red;
 }
 
-  .element .title {
-    text-align: center;
-    position: absolute;
-    top: 30px;
-    left: 0px;
-    font-size: 12px;
-    font-weight: bold;
-    color: #7b082877;
-    text-shadow: 0 0 10px #7b082877;
-  }
-
-  .element .image {
-    position: absolute;
-    top: 70px;
-    left: 0px;
-    width: 90%;
-  }
-
-  .element .url {
-    position: absolute;
-    bottom: 10px;
-    left: 0px;
-    font-size: 14px;
-    color: #000;
-  }
-
-  .element .details {
-    position: absolute;
-    bottom: 30px;
-    left: 0px;
-    font-size: 10px;
-    color: #7b082877;
-  }
-
-button {
-  color: red;
-  background: transparent;
-  outline: 1px solid red;
-  border: 0px;
-  padding: 5px 10px;
-  cursor: pointer;
+.element .title {
+  text-align: center;
+  position: absolute;
+  top: 30px;
+  left: 0px;
+  font-size: 12px;
+  font-weight: bold;
+  color: #7b082877;
+  text-shadow: 0 0 10px #7b082877;
 }
 
-button:hover {
-  background-color: rgba($red, 0.5);
+.element .image {
+  position: absolute;
+  top: 70px;
+  left: 0px;
+  width: 90%;
 }
 
-button:active {
-  color: #000000;
-  background-color: rgba($red, 0.75);
+.element .url {
+  position: absolute;
+  bottom: 10px;
+  left: 0px;
+  font-size: 14px;
+  color: #000;
 }
 
+.element .details {
+  position: absolute;
+  bottom: 30px;
+  left: 0px;
+  font-size: 10px;
+  color: #7b082877;
+}
