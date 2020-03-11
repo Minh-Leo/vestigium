@@ -15,14 +15,14 @@
         <h5><%= current_user.address %> </h5>
       <% end %>
       <h5><%= current_user.email %></h5>
-      <h6>You have <%= @favorites.size  %> favorites</h6>
+      <h6>You have <%= @favorites.size  %> favourites</h6>
       </div>
       <%= link_to "Edit profile", edit_user_path(current_user),
       :id => "edit-profile-button" %>
     </div>
 
     <div class="col-md-9">
-      <h2 id="favorite-title">Favorites</h2>
+      <h2 id="favorite-title">Favourites</h2>
       <ul class="favorites-list" id="favorite-container">
       <!-- <div class="favorites-list"> -->
         <% @favorites.each do |favorite| %>
