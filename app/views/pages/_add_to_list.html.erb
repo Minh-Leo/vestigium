@@ -15,8 +15,8 @@
         <%= f.input :favorite_id, as: :hidden, :input_html => { :value => favorite.id } %>
     </div>
     <div class="modal-footer">
-      <button type="button" class="btn btn-primary">
-        <%= f.submit "Add to List" %>
+      <button type="button" class="favorite-delete-button">
+        <%= f.button :submit, :class => "favorite-delete-button" %>
       </button>
       <% end %>
     </div>

@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-
+    <div class="col-md-3"></div>
     <div class="col-md-3" id="left-col">
       <% if current_user.photo.attached? %>
         <%= image_tag current_user.photo, id: "dashboard-avatar-img" %>
@@ -8,31 +8,33 @@
         <%= cl_image_tag 'https://res.cloudinary.com/dvbejvnhk/image/upload/v1583824016/avatar_if7whz.png', id: "dashboard-avatar-img" %>
       <% end %>
       <div id="dashboard-avatar-name">
-        <% if current_user.first_name && current_user.last_name %>
-          <h3><%= current_user.first_name + " " + current_user.last_name %></h3>
-        <% end %>
-        <% if current_user.address %>
-          <h5><%= current_user.address %> </h5>
-        <% end %>
-        <h5><%= current_user.email %></h5>
-        <h6>You have <%= @favorites.size  %> favorites</h6>
+
+      <% if current_user.first_name && current_user.last_name %>
+        <h3><%= current_user.first_name + " " + current_user.last_name %></h3>
+      <% end %>
+      <% if current_user.address %>
+        <h5><%= current_user.address %> </h5>
+      <% end %>
+      <h5><%= current_user.email %></h5>
+      <h6>You have <%= @favorites.size  %> favourites</h6>
+
       </div>
       <%= link_to "Edit profile", edit_user_path(current_user),
       :id => "edit-profile-button" %>
     </div>
 
     <div class="col-md-9">
-      <h2 id="favorite-title">Favorites</h2>
+      <h2 id="favorite-title">Favourites</h2>
       <ul class="favorites-list" id="favorite-container">
       <!-- <div class="favorites-list"> -->
         <% @favorites.each do |favorite| %>
           <li class="favorite">
 
             <div class="favorite-delete-div">
-              <%= link_to "X ", favorite_path(favorite),
-                  method: :delete, :class => "favorite-delete-button",
-                  data: { confirm: "Are you sure?" } %>
-            </div>
+                <%= link_to '<i class="fas fa-times-circle"></i>'.html_safe,
+                  favorite_path(favorite),
+                  method: :delete, :class => "favorite-delete-button" %>
+              </div>
 
             <div class="favorite-note-div">
               <%= simple_form_for(favorite) do |f| %>
@@ -59,8 +61,11 @@
         <% end %>
       </ul>
     </div>
+  </div>
 
-    <div class="list-container">
+  <div class="row">
+    <div class="col-md-3"></div>
+    <div class="list-container col-md-9">
       <h2>My Lists</h2>
       <%= simple_form_for(List.new, method: :post, url: lists_path) do |f| %>
         <%= f.input :name %>

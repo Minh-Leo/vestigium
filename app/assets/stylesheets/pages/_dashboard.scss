@@ -43,9 +43,8 @@
   margin-right: 20px;
 }
 
-
 .favorite-note-div {
-  padding: 20px;
+  padding: 0px 20px 20px 20px;
 }
 
 .favorite-note-button {
@@ -56,9 +55,17 @@
   color: #FFEDED;
 }
 
+.favorite-delete-div {
+  display: flex;
+  justify-content: flex-end;
+}
+
 .favorite-delete-button {
   text-align: right;
   margin: 1px;
+  width: 12px;
+  font-size: 20px;
+  margin-right: 12px;
 }
 
 a {
@@ -82,6 +89,7 @@ a:hover {
   display: flex;
   flex-direction: column;
   align-items: center;
+  position: fixed;
 }
 
 #dashboard-avatar-name {
