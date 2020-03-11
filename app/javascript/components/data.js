@@ -31,7 +31,7 @@ const convertToArray = (articles) => {
 
 // use in database analyzing
 export const checkSourceName = (id) => {
-  const sourceNames = ['abc-news-au', 'australian-financial-review', 'news-com-au', 'nbc-news', 'cnn', 'bloomberg', 'fox-news', 'espn', 'techradar', 'the-wall-street-journal', 'reuters', 'time', 'bbc-news', 'bbc-sport', 'independent'];
+  const sourceNames = ['abc-news-au', 'australian-financial-review', 'news-com-au', 'nbc-news', 'cnn', 'bloomberg', 'fox-news', 'espn', 'techradar', 'the-wall-street-journal', 'reuters', 'time', 'bbc-news', 'bbc-sport', 'independent', 'smh.com.au', '9news.com.au', 'kotaku.com.au', 'gamespot.com', 'fool.com.au'];
   return sourceNames[id - 1].toUpperCase();
 }
 

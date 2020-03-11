@@ -36,16 +36,14 @@ export const create3Dglobe = (data, radius) => {
       if (table[i].sentiment) {
         console.log('therere sentiment');
 
-        if (table[i].sentiment < -5) {
-          element.style.border = `10px solid #FF0000`;
+        if (table[i].sentiment <= -5) {
+          element.style.border = `10px solid #DD0000`;
           element.classList.add('negative');
-        }
-        if (table[i].sentiment >= -5 && table[i].sentiment < 2) {
-          element.style.border = `10px solid #FFFF00`;
+        } else if (table[i].sentiment > -5 && table[i].sentiment <= 2) {
+          element.style.border = `10px solid #FFF000`;
           element.classList.add('neutral');
-        }
-        if (table[i].sentiment > 2) {
-          element.style.border = `10px solid #0000FF`;
+        } else if (table[i].sentiment > 2) {
+          element.style.border = `10px solid #087E8B`;
           element.classList.add('positive');
         }
       } else {
@@ -150,7 +148,7 @@ export const create3Dglobe = (data, radius) => {
 
       object.position.x = ( ( i % 5 ) * 400 ) - 800;
       object.position.y = ( - ( Math.floor( i / 5 ) % 5 ) * 400 ) + 800;
-      object.position.z = ( Math.floor( i / 25 ) ) * 2000 - 2000;
+      object.position.z = ( Math.floor( i / 25 ) ) * 1000 - 0;
 
       targets.grid.push( object );
     }
@@ -186,12 +184,12 @@ export const create3Dglobe = (data, radius) => {
 
     }, false );
 
-    // var button = document.getElementById( 'grid' );
-    // button.addEventListener( 'click', function () {
+    var button = document.getElementById( 'grid' );
+    button.addEventListener( 'click', function () {
 
-    //   transform( targets.grid, 2000 );
+      transform( targets.grid, 2000 );
 
-    // }, false );
+    }, false );
 
     transform( targets.sphere, 2000 );
 

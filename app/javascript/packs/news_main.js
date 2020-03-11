@@ -16,17 +16,8 @@ const searchForm = document.getElementById('search-field-div');
 const searchField = document.getElementById('search-field');
 const threeContainer = document.getElementById('three-container');
 const newsSectionContainer = document.getElementById('news-section');
+const loadingScreen = document.getElementById('loading-screen');
 
-// searchForm.addEventListener('submit', (e) => {
-//   e.preventDefault();
-
-//   let articles = dataJson.slice(0, 120);
-//   threeContainer.innerHTML = '';
-//   console.log(searchField.value);
-//   create3Dglobe(articles, 1200);
-// });
-
-  // let articles = dataJson.length;
 let radius;
 if (dataJson.length <= 20) {
   radius = 500;
@@ -39,17 +30,17 @@ if (dataJson.length <= 20) {
 }
 
 
-let coorObject = {};
-
 const analyzingArticles = async () => {
+  loadingScreen.style.display = 'block';
+
   // Promise.all here bc the async from slice.map return an array of promises, and promise.all catch them all and wait for them to finish
   let articles = await Promise.all(dataJson.slice(0, 120).map( async (el, index) => {
     el.sentiment = analyze(`${el.title} ${el.description} ${el.body}`);
+    console.log(el.sentiment, typeof(el.sentiment));
     let places = nlp(`${el.body}`).match('#Place').text();
 
     // try catch here to catch exception in case there no location -> doesnt break the chain
     if (places) {
-      console.log(places);
       try {
         el.coordinates = await getCoordinates(places);
       } catch (e) {
@@ -69,20 +60,13 @@ const analyzingArticles = async () => {
 
   threeContainer.innerHTML = '';
   create3Dglobe(articles, radius);
+  loadingScreen.style.display = 'none';
 }
 
 
-// colorButton.addEventListener('click', () => {
-//   const allArticles = document.querySelectorAll('.element');
-//   console.log(allArticles.length);
-//   allArticles.forEach(article => {
-//     article.classList.toggle('onlyColor');
-//   });
-// });
-
-const assignButton = (button, s) => {
+const assignButton = (button, cName) => {
   button.addEventListener('click', () => {
-    let allArticles = document.querySelectorAll(`.element${s}`);
+    let allArticles = document.querySelectorAll(`.element${cName}`);
     console.log(allArticles.length);
     allArticles.forEach(article => {
       article.classList.toggle('onlyColor');
@@ -93,9 +77,6 @@ assignButton(colorButton, '');
 assignButton(negativeButton, '.negative');
 assignButton(neutralButton, '.neutral');
 assignButton(positiveButton, '.positive');
-// const showOnlyColor = () => {
-//   allArticles.style.width = 'unset';
-// };
 
 analyzingArticles();
 

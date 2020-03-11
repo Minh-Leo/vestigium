@@ -15,6 +15,7 @@ class PagesController < ApplicationController
   end
 
   def news_main
+    @keywords = ['Covid', 'Italy', 'China', 'Wuhan', 'Corona', 'Election', 'Asx', 'Toilet paper', 'News']
     if params[:query].present?
       @articles = Article.search_by_title_and_description(params[:query]).to_json.html_safe
       # @articles = PgSearch.multisearch(params[:query])

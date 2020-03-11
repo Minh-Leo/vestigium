@@ -17,6 +17,5 @@ searchForm.addEventListener('submit', (e) => {
   console.log(searchField.value);
   getArticles(searchField.value).then(data => {
     create3Dglobe(data, 900);
-    // console.log(data);
   });
 })

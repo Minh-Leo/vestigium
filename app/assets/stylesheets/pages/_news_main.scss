@@ -3,6 +3,18 @@
   height: calc(100vh - 60px);
 }
 
+#loading-screen {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  // transform: translate(-50%, -50%);
+  background: url('https://res.cloudinary.com/thetravelusts/image/upload/v1583891238/Vestigium/loadingRadar_ccf3ma.gif');
+  // background-position: center;
+  // background-repeat: no-repeat;
+  display: none;
+  z-index: 10;
+}
+
 #search-field-div {
   position: absolute;
   top: 60px;
@@ -31,41 +43,24 @@
   background-repeat: no-repeat;
 }
 
-.tags-container {
+.keywords-container {
+  width: 300px;
+  height: 300px;
+  background: black;
   display: flex;
-  justify-content: space-between;
-  width: 100%;
-  height: 50px;
+  justify-content: space-around;
   position: absolute;
   top: 80%;
+  right: 10px;
 
-  .tag {
+  .keyword {
     display: block;
-    height: 50px;
-    width: 100px;
-    border: 1px solid black;
-    background: red;
-  }
-
-  .left-tag {
-
-  }
-
-  .right-tag {
-
+    // height: 30px;
+    // width: 60px;
+    background: transparent;
+    color: red;
   }
 }
-
-.keywords-container {
-  display: flex;
-  background: red;
-  width: 100%;
-  height: 50px;
-  position: absolute;
-  left: 0;
-  bottom: 0;
-}
-
 
 
 // 3D css

@@ -1,4 +1,5 @@
 <div class="main-home-container news-section">
+  <div id="loading-screen"></div>
 
   <div id="three-container"></div>
   <div id="three-menu">
@@ -11,14 +12,17 @@
     <button id='neutral'>Neutral</button>
     <button id='positive'>Positive</button>
     <%= form_for :global_map, url: global_map_path, method: :get do |f| %>
-          <%= f.submit 'click Me' %>
+          <%= f.submit 'Let go to space' %>
     <% end %>
   </div>
-  <div id="keywords">
-    <%= form_tag news_main_path, method: :get do %>
-      <%= hidden_field_tag :query, params[:query], value: 'weather' %>
-      <%= submit_tag 'Weather' %>
+  <div id="keywords" class="keywords-container">
+    <% @keywords.each do |word| %>
+      <%= form_tag news_main_path, class: 'keyword', method: :get do %>
+        <%= hidden_field_tag :query, params[:query], value: word %>
+        <%= submit_tag word %>
+      <% end %>
     <% end %>
+
   </div>
 
   <%= form_tag news_main_path,
@@ -59,5 +63,4 @@
 <script>
   let dataJson = <%= @articles %>;
 </script>
-
 <%= javascript_pack_tag 'news_main' %>
