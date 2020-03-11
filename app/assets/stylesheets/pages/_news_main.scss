@@ -1,6 +1,17 @@
 .news-section {
   position: relative;
   height: calc(100vh - 60px);
+
+  &:before {
+    content: '';
+    // background: url('https://motionarray.imgix.net/preview-59559gHZHc1UsJU_0013.jpg');
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.3;
+  }
 }
 
 #loading-screen {
