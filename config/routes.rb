@@ -10,6 +10,9 @@ Rails.application.routes.draw do
 
   resources :users, only: [:edit, :update, :show, :destroy]
 
+  resources :lists, only: [:new, :create, :destroy, :edit, :update]
+
+  resources :favorite_lists, only: :create
 
   resources :favorites, only: [:edit, :update, :destroy]
 
