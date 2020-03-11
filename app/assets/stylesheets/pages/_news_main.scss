@@ -4,13 +4,16 @@
 
   &:before {
     content: '';
-    // background: url('https://motionarray.imgix.net/preview-59559gHZHc1UsJU_0013.jpg');
+    background: url('https://res.cloudinary.com/thetravelusts/image/upload/v1583930872/Vestigium/17580_ncdjfk.jpg');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    opacity: 0.3;
+    opacity: 1;
   }
 }
 
@@ -56,6 +59,16 @@
     outline: none;
 }
 
+.corner-left {
+  border-bottom-left-radius: 10px;
+}
+.corner-right {
+  border-top-right-radius: 10px;
+}
+.btn-map {
+  border-bottom-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
 
 // Globe css
 .globe-container {

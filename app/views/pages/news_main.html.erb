@@ -7,21 +7,21 @@
   <div id="three-menu">
     <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
       <div class="btn-group mr-2" role="group" aria-label="First group">
-        <button id="table" class="btn btn-secondary">Spot</button>
+        <button id="table" class="btn btn-secondary corner-left">Spot</button>
         <button id="sphere" class="btn btn-secondary">Sphere</button>
         <!-- <button id="grid">Grid</button> -->
-        <button id='onlyColor' class="btn btn-secondary">Color</button>
+        <button id='onlyColor' class="btn btn-secondary corner-right">Color</button>
       </div>
       <div class="btn-group mr-2" role="group" aria-label="Second group">
-         <button id='negative' class="btn btn-secondary">Negative</button>
+         <button id='negative' class="btn btn-secondary corner-left">Negative</button>
         <button id='neutral' class="btn btn-secondary">Neutral</button>
-        <button id='positive' class="btn btn-secondary">Positive</button>
+        <button id='positive' class="btn btn-secondary corner-right">Positive</button>
       </div>
     </div>
 
     <div class="btn-group mr-3" role="group" aria-label="Third group">
       <%= form_for :global_map, url: global_map_path, method: :get do |f| %>
-            <%= f.submit 'Let go to space', class: 'btn btn-secondary' %>
+            <%= f.submit 'Let go to space', class: 'btn btn-secondary btn-map' %>
       <% end %>
     </div>
   </div>
