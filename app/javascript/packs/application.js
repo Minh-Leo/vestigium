@@ -6,10 +6,7 @@ import "../components/compromise";
 
 import { analyze } from '../components/sentiment';
 
-import { initSortable } from '../plugins/init_sortable';
 import { initMapbox } from '../plugins/init_mapbox';
-import { initNotes } from '../plugins/init_notes';
 
 initMapbox();
-// initNotes();
-// initSortable();
+
