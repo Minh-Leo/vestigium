@@ -4,6 +4,7 @@ class FavoritesController < ApplicationController
   def new
     @article = Article.find(params[:article_id])
     @favorite = Favorite.new
+    # flash.notice = "Added to favorites."
   end
 
   def create
@@ -11,6 +12,7 @@ class FavoritesController < ApplicationController
     @favorite.user = current_user
     @favorite.article = Article.find(params[:article_id])
     @favorite.save!
+    flash.notice = "Favorite saved!"
     redirect_to dashboard_path
   end
 

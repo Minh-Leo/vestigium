@@ -1,4 +1,10 @@
 <body>
+  <% flash.each do |type, msg| %>
+  <div class="alert alert-info">
+    <%= msg %>
+  </div>
+<% end %>
+
   <div class="view" style="background-image: url('https://images.unsplash.com/photo-1542323515918-d1939b6b84c2'); background-repeat: no-repeat; background-size: cover; background-position: center center; height: 100%; opacity: 1">
     <br>
     <h1 style="text-align:center">Create new Favorite</h1>

@@ -12,6 +12,7 @@ class ListsController < ApplicationController
     end
     if @list.save
       redirect_to dashboard_path
+      flash.notice = "List saved!"
     else
       redirect_to dashboard_path
     end
