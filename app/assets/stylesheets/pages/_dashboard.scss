@@ -138,7 +138,16 @@ a:hover {
 }
 
 .js-note-field {
-  border: none;
+  border: 1px solid #3c3c3c22;
+}
+
+.was-validated .form-control:valid, .form-control.is-valid {
+  border-color: rgba($blue-prussian, 0.5);
+}
+
+.form-control.is-valid:focus {
+  border-color: rgba($red, 0.8);
+  box-shadow: 0 0 0 0.15rem rgba($red, 0.2);
 }
 
 .js-note-field:focus {
@@ -159,3 +168,7 @@ input[type=text]:focus, textarea:focus {
 .js-note-field:focus {
       outline: none;
       }
+
+.edit_favorite > input {
+  color: red;
+}

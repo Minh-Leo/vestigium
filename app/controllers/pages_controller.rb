@@ -11,7 +11,7 @@ class PagesController < ApplicationController
   end
 
   def dashboard
-    @favorites = current_user.favorites
+    @favorites = current_user.favorites.order(created_at: :desc)
     @lists = current_user.lists
     @favorite_lists = current_user.favorite_lists
   end
