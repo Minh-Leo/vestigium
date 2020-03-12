@@ -1,17 +1,27 @@
-<div class="main-home-container" id="news-section">
+<div class="main-home-container news-section">
 
   <div id="three-container"></div>
-    <div id="three-menu">
-      <button id="table">Spot</button>
-      <button id="sphere">Sphere</button>
-      <!-- <button id="grid">GRID</button> -->
-      <button id='create' onclick="console.log('minh here'); console.log('hello');">Create</button>
-    </div>
 
-  <form id="search-field-div">
-      <input type="text" name='search-field' id='search-field' placeholder="Search...">
-      <button type='submit' id="search-button">Search</button>
-  </form>
+  <div id="three-menu">
+    <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+      <div class="btn-group mr-2" role="group" aria-label="First group">
+          <button class="btn btn-secondary corner-left" id="table">Compress</button>
+          <button class="btn btn-secondary corner-right" id="sphere">Expand</button>
+          <!-- <button id="grid">GRID</button> -->
+          <!-- <button id='create' onclick="console.log('minh here'); console.log('hello');">Create</button> -->
+      </div>
+    </div>
+  </div>
+
+  <div class="search-card">
+    <form id="search-field-div">
+        <input type="text" name='search-field' id='search-field' placeholder="Search..." class="form-control search-input">
+        <span class="input-group-btn">
+          <button type='submit' id="submit-search-btn" class="search-btn"><i class="fas fa-search"></i></button>
+        </span>
+    </form>
+  </div>
+
 
   <div id="modals-container"></div>
 

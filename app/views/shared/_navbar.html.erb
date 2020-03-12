@@ -20,6 +20,9 @@
         <li class="nav-item">
           <%= link_to "Analyse", news_main_path, class: "nav-link" %>
         </li>
+        <li class="nav-item">
+          <%= link_to "My Archive", dashboard_path, class: "nav-link" %>
+        </li>
         <li class="nav-item dropdown">
         <% if current_user.photo.attached? %>
           <%= link_to image_tag(current_user.photo, :alt => "Image Description", :class => "avatar dropdown-toggle"), dashboard_path %>

@@ -17,13 +17,16 @@ class PagesController < ApplicationController
   end
 
   def news_main
-    # @articles = Article.all.first(60).to_json.html_safe
-
+    @keywords = ['Covid', 'Italy', 'China', 'Wuhan', 'Corona', 'Election', 'Asx', 'Toilet paper', 'News']
     if params[:query].present?
-      @articles = PgSearch.multisearch(params[:query]).to_json.html_safe
+      @articles = Article.search_by_title_and_description(params[:query]).to_json.html_safe
+      # @articles = PgSearch.multisearch(params[:query])
     else
       @articles = Article.all.to_json.html_safe
     end
+  end
+
+  def global_map
   end
 
   def news_search

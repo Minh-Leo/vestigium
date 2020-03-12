@@ -8,6 +8,7 @@
         <%= cl_image_tag 'https://res.cloudinary.com/dvbejvnhk/image/upload/v1583824016/avatar_if7whz.png', id: "dashboard-avatar-img" %>
       <% end %>
       <div id="dashboard-avatar-name">
+
       <% if current_user.first_name && current_user.last_name %>
         <h3><%= current_user.first_name + " " + current_user.last_name %></h3>
       <% end %>
@@ -16,6 +17,7 @@
       <% end %>
       <h5><%= current_user.email %></h5>
       <h6>You have <%= @favorites.size  %> favourites</h6>
+
       </div>
       <%= link_to "Edit profile", edit_user_path(current_user),
       :id => "edit-profile-button" %>
@@ -85,3 +87,6 @@
 
   </div>
 </div>
+
+
+<%= javascript_pack_tag 'dashboard' %>

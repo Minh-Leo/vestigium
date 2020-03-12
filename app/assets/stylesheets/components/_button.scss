@@ -1,0 +1,41 @@
+.search-btn {
+  position: absolute;
+  top: 0;
+  right: 0;
+  border: none;
+  outline: none;
+}
+
+.keyword-btn {
+  outline: none;
+  padding: 0;
+  margin-right: 5px;
+  margin-top: 5px;
+}
+
+.btn-secondary {
+  background: #000;
+  color: white;
+
+  &:hover {
+    background: red;
+  }
+}
+
+button {
+  color: red;
+  background: transparent;
+  border: 0px;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: rgba($red, 0.5);
+}
+
+button:active {
+  color: #000000;
+  background-color: rgba($red, 0.75);
+}
+
