@@ -21,7 +21,7 @@
       </div>
       <%= link_to "Edit profile", edit_user_path(current_user),
       :id => "edit-profile-button" %>
-      <%= link_to "Log out", destroy_user_session_path, method: :delete, :id => "edit-profile-button" %>
+      <%= link_to "Log out", destroy_user_session_path, method: :delete, :id => "edit-profile-button", :class => "logout-button" %>
     </div>
 
     <div class="col-md-9">
@@ -52,8 +52,6 @@
 
               <div class="favorite-link">
                 <p> <%= link_to "#{favorite.article.title}", favorite.article.url %></p>
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal<%= favorite.id %>">
-                  Add to list!
                 </button>
               </div>
             </div>
@@ -62,29 +60,6 @@
         <% end %>
       </ul>
     </div>
-  </div>
-
-  <div class="row">
-    <div class="col-md-3"></div>
-    <div class="list-container col-md-9">
-      <h2>My Lists</h2>
-      <%= simple_form_for(List.new, method: :post, url: lists_path) do |f| %>
-        <%= f.input :name %>
-        <%= f.submit 'Create list'%>
-      <% end %>
-      <br>
-      <% @lists.each do |list| %>
-        <div class="list-created">
-          <h3><%= list.name %></h3>
-          <ul>
-            <% list.favorites.each do |fav| %>
-              <li><%= fav.article.title %></li>
-            <% end %>
-          </ul>
-        </div>
-      <% end %>
-    </div>
-
   </div>
 </div>
 
