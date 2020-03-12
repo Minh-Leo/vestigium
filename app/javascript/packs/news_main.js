@@ -6,16 +6,12 @@ import nlp from 'compromise';
 
 console.log('begin on main');
 
-const searchButton = document.getElementById('submit-search-btn');
 const colorButton = document.getElementById('onlyColor');
 const negativeButton = document.getElementById('negative');
 const neutralButton = document.getElementById('neutral');
 const positiveButton = document.getElementById('positive');
 
-const searchForm = document.getElementById('search-field-div');
-const searchField = document.getElementById('search-field');
 const threeContainer = document.getElementById('three-container');
-const newsSectionContainer = document.getElementById('news-section');
 const loadingScreen = document.getElementById('loading-screen');
 
 let radius;
@@ -31,12 +27,12 @@ if (dataJson.length <= 20) {
 
 
 const analyzingArticles = async () => {
-  // loadingScreen.style.display = 'block';
+  loadingScreen.style.display = 'block';
 
   // Promise.all here bc the async from slice.map return an array of promises, and promise.all catch them all and wait for them to finish
   let articles = await Promise.all(dataJson.slice(0, 120).map( async (el, index) => {
     el.sentiment = analyze(`${el.title} ${el.description} ${el.body}`);
-    console.log(el.sentiment, typeof(el.sentiment));
+    // console.log(el.sentiment, typeof(el.sentiment));
     let places = nlp(`${el.body}`).match('#Place').text();
 
     // try catch here to catch exception in case there no location -> doesnt break the chain
@@ -67,7 +63,7 @@ const analyzingArticles = async () => {
 const assignButton = (button, cName) => {
   button.addEventListener('click', () => {
     let allArticles = document.querySelectorAll(`.element${cName}`);
-    console.log(allArticles.length);
+    // console.log(allArticles.length);
     allArticles.forEach(article => {
       article.classList.toggle('onlyColor');
     });
@@ -79,21 +75,3 @@ assignButton(neutralButton, '.neutral');
 assignButton(positiveButton, '.positive');
 
 analyzingArticles();
-
-
-// dataJson.slice(0, 120).forEach( (el, index) => {
-//     el.sentiment = analyze(`${el.title} ${el.description} ${el.body}`);
-    // console.log(el.sentiment);
-    // console.log(el.title);
-    // console.log(el)
-    // let doc = nlp(`${el.body}`);
-    // let coor = await getCoordinates(doc.match('#Place').text());
-    // console.log(coor, 'enddd', el.sentiment, index);
-  // })
-
-
-// const getAddress = () => {
-//   let doc = nlp(`${el.body}`);
-    // let coor = await getCoordinates(doc.match('#Place').text());
-    // console.log(coor, 'enddd', el.sentiment, index);
-// }

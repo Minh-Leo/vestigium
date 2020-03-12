@@ -8,5 +8,5 @@ import { analyze } from '../components/sentiment';
 
 import { initMapbox } from '../plugins/init_mapbox';
 
-initMapbox();
+// initMapbox();
 

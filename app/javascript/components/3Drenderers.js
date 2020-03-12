@@ -34,8 +34,6 @@ export const create3Dglobe = (data, radius) => {
 
       // Sentimental value display
       if (table[i].sentiment !== null) {
-        console.log('therere sentiment');
-
         if (table[i].sentiment <= -5) {
           element.style.border = `10px solid #DD0000`;
           element.classList.add('negative');
@@ -94,7 +92,7 @@ export const create3Dglobe = (data, radius) => {
                   </div>
 
                   <div class="modal-footer">
-                    <a href="articles/${table[i].id}/favorites/new" type="button" class="btn btn-secondary">Add to favorite</a>
+                    <a href="articles/${table[i].id}/favorites/new" type="button" class="btn btn-secondary add-to-favorite">Add to favorite</a>
                     <button type="button" class="btn btn-success"><a href='${table[i].url}' target='_blank'>Read me</a></button>
                   </div>
                 </div>
@@ -141,26 +139,12 @@ export const create3Dglobe = (data, radius) => {
 
     }
 
-    // grid
-
-    for ( var i = 0; i < objects.length; i ++ ) {
-      var object = new THREE.Object3D();
-
-      object.position.x = ( ( i % 5 ) * 400 ) - 800;
-      object.position.y = ( - ( Math.floor( i / 5 ) % 5 ) * 400 ) + 800;
-      object.position.z = ( Math.floor( i / 25 ) ) * 1000 - 0;
-
-      targets.grid.push( object );
-    }
-
     //
 
     renderer = new CSS3DRenderer();
     // resizeCanvasToDisplaySize();
 
     renderer.setSize(window.innerWidth, window.innerHeight);
-
-
 
     document.getElementById( 'three-container' ).appendChild( renderer.domElement );
 
@@ -184,19 +168,10 @@ export const create3Dglobe = (data, radius) => {
 
     }, false );
 
-    // var button = document.getElementById( 'grid' );
-    // button.addEventListener( 'click', function () {
-
-    //   transform( targets.grid, 2000 );
-
-    // }, false );
-
     transform( targets.sphere, 2000 );
 
     //
-
     window.addEventListener( 'resize', onWindowResize, true );
-
   }
 
 
@@ -234,7 +209,6 @@ export const create3Dglobe = (data, radius) => {
     renderer.setSize( window.innerWidth, window.innerHeight );
 
     render();
-
   }
 
   function animate() {
