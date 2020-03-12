@@ -52,16 +52,16 @@ export const create3Dglobe = (data, radius) => {
 
       // element.style.backgroundColor = `rgba(255,255,255, ${(Math.random() * (1 - 0.7) + 0.7).toFixed(2)})`;
 
-      var title = document.createElement( 'div' );
-      title.className = 'title';
-      title.textContent = table[i].title;
-      element.appendChild( title );
-
       var image = document.createElement( 'img' );
       image.className = 'image';
       image.src = table[i].image_url;
       image.style = 'width: 300px; height: 180px';
       element.appendChild( image );
+
+      var title = document.createElement( 'div' );
+      title.className = 'title';
+      title.textContent = table[i].title;
+      element.appendChild( title );
 
       var details = document.createElement( 'div' );
       details.className = 'details';

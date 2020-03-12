@@ -22,9 +22,9 @@
         </li>
         <li class="nav-item dropdown">
           <% if current_user.photo.attached? %>
-            <%= link_to image_tag(current_user.photo, :alt => "User avatar", :class => "avatar dropdown-toggle"), dashboard_path %>
+            <%= link_to image_tag(current_user.photo, :alt => "User avatar", :class => "avatar-bordered dropdown-toggle"), dashboard_path %>
           <% else %>
-            <%= link_to image_tag('https://res.cloudinary.com/thetravelusts/image/upload/v1583901692/Vestigium/astrona_ozwvk7.png', :alt => "User avatar", :class => "avatar dropdown-toggle"), dashboard_path %>
+            <%= link_to image_tag('https://res.cloudinary.com/thetravelusts/image/upload/v1583901692/Vestigium/astrona_ozwvk7.png', :alt => "User avatar", :class => "avatar-bordered dropdown-toggle"), dashboard_path %>
           <% end %>
         </li>
       <% else %>
