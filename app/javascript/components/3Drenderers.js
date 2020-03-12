@@ -29,19 +29,21 @@ export const create3Dglobe = (data, radius) => {
 
       var element = document.createElement( 'a' );
       element.className = 'element';
+      element.setAttribute('data-toggle', "modal");
+      element.setAttribute('data-target', `#news-modal-${i}`);
       element.id = `news-card-${i}`;
       element.target = '_blank';
 
       // Sentimental value display
       if (table[i].sentiment !== null) {
         if (table[i].sentiment <= -5) {
-          element.style.border = `10px solid #DD0000`;
+          element.style.border = `5px solid #FF0000`;
           element.classList.add('negative');
         } else if (table[i].sentiment > -5 && table[i].sentiment <= 2) {
-          element.style.border = `10px solid #FFF000`;
+          element.style.border = `5px solid #FFFF82`;
           element.classList.add('neutral');
         } else if (table[i].sentiment > 2) {
-          element.style.border = `10px solid #087E8B`;
+          element.style.border = `5px solid #087E8B`;
           element.classList.add('positive');
         }
       } else {
@@ -67,10 +69,10 @@ export const create3Dglobe = (data, radius) => {
       element.appendChild( details );
 
 
-      let buttonToInsert = `
-      <button type="button" class="btn btn-primary btn-news-modal" data-toggle="modal" data-target="#news-modal-${i}">
-            More info
-      </button>`;
+      // let buttonToInsert = `
+      // <button type="button" class="btn btn-primary btn-news-modal" data-toggle="modal" data-target="#news-modal-${i}">
+      //       More info
+      // </button>`;
 
       let modalToInsert = `
             <div class="modal fade" id="news-modal-${i}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -87,19 +89,19 @@ export const create3Dglobe = (data, radius) => {
                     <h5>by: <strong>${table[i].author ? table[i].author : 'Author unknown'}</strong><h5>
                     <h5>Published at: <strong>${
                       table[i].source ? table[i].source : checkSourceName(table[i].source_id)
-                    }</strong><br><strong>${table[i].publish_time}</strong><h5>
+                    }</strong><br><strong>${table[i].publish_time.replace('T', ' __ ').replace('Z', '')}</strong><h5>
                     <p>${table[i].body ? table[i].body : table[i].description}<p>
                   </div>
 
                   <div class="modal-footer">
-                    <a href="articles/${table[i].id}/favorites/new" type="button" class="btn btn-secondary add-to-favorite">Add to favorite</a>
-                    <button type="button" class="btn btn-success"><a href='${table[i].url}' target='_blank'>Read me</a></button>
+                    <a href="articles/${table[i].id}/favorites/new" type="button" class="btn btn-secondary add-to-favorite corner-left">Add to favorite</a>
+                    <button type="button" class="btn btn-dark corner-right"><a href='${table[i].url}' target='_blank'>Read me</a></button>
                   </div>
                 </div>
               </div>
             </div>
       `;
-      element.insertAdjacentHTML('beforeend', buttonToInsert);
+      // element.insertAdjacentHTML('beforeend', buttonToInsert);
       modalsContainer.insertAdjacentHTML('beforeend', modalToInsert);
 
 

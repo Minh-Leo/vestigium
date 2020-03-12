@@ -1,9 +1,3 @@
-.modal-body {
-  display: flex;
-  flex-direction: column;
-}
-
-
 .we-pm-icon {
   // background-image: url('https://images-na.ssl-images-amazon.com/images/I/51a4c1eOl2L.png');
 }
@@ -12,7 +6,50 @@
   width: 200px;
 }
 
+.modal-header {
+  border-bottom: 2px solid rgba(#dd0000, 1);
+}
+
 .modal-content {
     border-radius: 10px;
     width: 600px;
+}
+
+.modal-body {
+  display: flex;
+  flex-direction: column;
+  font-family: $body-font;
+  border-bottom: 1px solid rgba(#dd0000, 0.1);
+
+  img {
+    margin-bottom: 20px;
+  }
+
+  h5 {
+    font-family: $body-font;
+    text-align: center;
+  }
+}
+
+.modal-title {
+  font-weight: 600;
+  text-align: center;
+}
+
+.modal-footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .btn-dark {
+    background: $blue-seaweed;
+
+    &:hover {
+      background: red;
+    }
+
+    a {
+      color: white;
+    }
+  }
 }

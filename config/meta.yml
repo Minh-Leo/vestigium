@@ -1,0 +1,6 @@
+
+meta_product_name: "Vestigium"
+meta_title: "Vestigium - Product tagline"
+meta_description: "Read news in a whole news way"
+meta_image: "cover.png" # should exist in `app/assets/images/`
+twitter_account: "@product_twitter_account"   # required for Twitter Cards
