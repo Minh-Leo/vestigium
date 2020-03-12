@@ -13,6 +13,12 @@ domains = %w[smh.com.au 9news.com.au kotaku.com.au gamespot.com fool.com.au]
 
 puts 'begin'
 
+List.destroy_all
+Favorite.destroy_all
+Article.destroy_all
+Source.destroy_all
+User.destroy_all
+
 # Sources only needed to be created once, comment out the code for sources created when the sources is created
 sources.each do |source|
   Source.create!(name: source)
