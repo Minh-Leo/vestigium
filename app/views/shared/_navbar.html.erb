@@ -24,12 +24,16 @@
           <%= link_to "My Archive", dashboard_path, class: "nav-link" %>
         </li>
         <li class="nav-item dropdown">
-        <% if current_user.photo.attached? %>
-          <%= link_to image_tag(current_user.photo, :alt => "Image Description", :class => "avatar dropdown-toggle"), dashboard_path %>
-        <% else %>
-        <%= link_to image_tag('https://res.cloudinary.com/thetravelusts/image/upload/v1583901692/Vestigium/astrona_ozwvk7.png', :alt => "Image Description", :class => "avatar dropdown-toggle"), dashboard_path %>
-        <%= cl_image_tag 'https://res.cloudinary.com/thetravelusts/image/upload/v1583901692/Vestigium/astrona_ozwvk7.png', class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
-        <% end %>
+          <% if current_user.photo.attached? %>
+            <%= image_tag current_user.photo, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+          <% else %>
+          <%= cl_image_tag 'https://res.cloudinary.com/thetravelusts/image/upload/v1583901692/Vestigium/astrona_ozwvk7.png', class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+          <% end %>
+
+          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+            <%= link_to "Profile", user_path(current_user), class: "dropdown-item" %>
+            <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+          </div>
         </li>
       <% else %>
         <li class="nav-item">

@@ -7,9 +7,11 @@ console.log('begin');
 const searchForm = document.getElementById('search-field-div');
 const searchField = document.getElementById('search-field');
 const threeContainer = document.getElementById('three-container');
+const loadingScreen = document.getElementById('loading-screen');
+
 // const newsSectionContainer = document.getElementById('news-section');
 
-
+loadingScreen.style.display = 'block';
 searchForm.addEventListener('submit', (e) => {
   e.preventDefault();
   threeContainer.innerHTML = '';
@@ -17,4 +19,5 @@ searchForm.addEventListener('submit', (e) => {
   getArticles(searchField.value).then(data => {
     create3Dglobe(data, 900);
   });
+  loadingScreen.style.display = 'none';
 })
