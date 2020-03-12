@@ -19,7 +19,7 @@ body {
 
   &:before {
     content: '';
-    background: url('https://paulaparicio.files.wordpress.com/2014/02/abstract-architecture-photography-8.jpg');
+    // background: url('https://paulaparicio.files.wordpress.com/2014/02/abstract-architecture-photography-8.jpg');
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
@@ -30,8 +30,6 @@ body {
     height: 100%;
     opacity: 0.5;
   }
-
-
 }
 
 .feature-text-container {
@@ -41,7 +39,7 @@ body {
     z-index: 10;
 
   .feature-title {
-    font-size: 34px;
+    font-size: 28px;
     font-weight: bold;
     font-family: 'Times New Roman';
   }
@@ -55,35 +53,57 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-    width: 450px;
-    height: 300px;
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    background: red;
+  width: 100%;
+  height: 300px;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  background: linear-gradient(to top, #aa0000, #8b0000);
+  overflow: hidden;
+  transition: all 3s;
+
+  &:hover {
+    transform: scale(1.02);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+
+    .first {
+      transform: translate(-80px, 0px);
+    }
+    .next {
+      transform: translate(50px, 90px);
+    }
+    .last {
+      transform: translate(-120px, -80px);
+    }
+  }
 
     .square-text {
       color: #fff;
+      font-size: 28px;
       z-index: 10;
     }
 
     .overlay-text {
-      color: #ffffff44;
-      font-size: 136px;
+      color: #ffffff29;
+      font-size: 156px;
       font-weight: bold;
       font-family: 'Times New Roman';
       position: absolute;
-      top: 0px;
+      top: -10px;
       left: 10px;
       z-index: 1;
       // transform: rotateY(90deg);
+      transition: all 3s;
 
+      &.first {
+        top: -90px;
+      }
       &.next {
-        top: 50px;
+        top: 10px;
         left: 0;
       }
       &.last {
-        top: 120px;
+        top: 80px;
         left: -10px;
       }
     }
@@ -94,25 +114,56 @@ body {
 .two-third {
   width: 66%;
   position: relative;
-  background: linear-gradient(to top, #ffffff55, #eeeeee55), url('https://res.cloudinary.com/thetravelusts/image/upload/v1583367157/Vestigium/upsidedown-building.png') ;
+  background: linear-gradient(to top, #ffffff55, #eeeeee55), url('https://paulaparicio.files.wordpress.com/2014/02/abstract-architecture-photography-8.jpg') ;
   background-size: cover;
   background-position: bottom;
   background-repeat: no-repeat;
+
+  .feature-text-container {
+    position: absolute;
+    top: 150px;
+    left: 60%;
+    z-index: 10;
+
+  .feature-title {
+    font-size: 28px;
+    font-weight: bold;
+    font-family: 'Times New Roman';
+  }
+
+  .feature-text {
+    text-align: right;
+    padding-right: 50px;
+  }
+}
 }
 
 .red-tag {
-  width: 350px;
-  height: 35px;
+  width: 40%;
+  height: 45px;
   background: red;
   color: white;
   position: absolute;
   left: 0px;
-  bottom: 40%;
+  bottom: 50%;
   padding: 6px 20px 0 0;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s;
+
+  &:hover {
+    transform: translate(0px, -2px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    color: black;
+    h6 {
+      transform: translate(-70px, 2px);
+      font-weight: bold;
+    }
+  }
 
   h6 {
-    text-align: right;
+    font-size: 22px;
+    text-align: center;
+    transition: all 0.3s;
   }
 }
 
@@ -121,22 +172,34 @@ body {
   height: 300px;
   display: flex;
   position: absolute;
-    bottom: 0;
-    left: 0;
+  bottom: 0;
+  left: 0;
 
   .black-square {
     width: 50%;
     height: 100%;
-    background: url('https://res.cloudinary.com/thetravelusts/image/upload/v1583308861/Vestigium/hayden-walker-ihiEd-_4TNY-unsplash_yhmdxh.jpg');
+    background: linear-gradient(to top, #000000dd, #00000088), url('https://res.cloudinary.com/thetravelusts/image/upload/v1583308861/Vestigium/hayden-walker-ihiEd-_4TNY-unsplash_yhmdxh.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     display: flex;
-  justify-content: center;
-  align-items: center;
+    justify-content: center;
+    align-items: center;
+    transition: all 3s;
 
-    h3, h6 {
+    &:hover {
+      transform: scale(1.02);
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+      background: linear-gradient(to bottom, #000000dd, #00000088), url('https://res.cloudinary.com/thetravelusts/image/upload/v1583308861/Vestigium/hayden-walker-ihiEd-_4TNY-unsplash_yhmdxh.jpg');
+      background-size: cover;
+      background-repeat: no-repeat;
+    }
+
+    h3 {
       color: #fff;
+    }
+    h6 {
+      color: #bbb;
     }
   }
 
@@ -151,9 +214,21 @@ body {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+    transition: all 3s;
 
-    h3, h6 {
+    &:hover {
+      transform: scale(1.02);
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+      background: linear-gradient(to bottom, #ffffffdd, #ffffff88), url('https://res.cloudinary.com/thetravelusts/image/upload/v1583369651/Vestigium/piles-paper.jpg');
+      background-size: cover;
+      background-repeat: no-repeat;
+    }
+
+    h3 {
       color: #000;
+    }
+    h6 {
+      color: #444;
     }
   }
 }
