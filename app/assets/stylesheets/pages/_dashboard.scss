@@ -128,5 +128,31 @@ a:hover {
 .list-categories {
   display: flex;
   justify-content: space-evenly;
-
 }
+
+.logout-button {
+  margin: 10px;
+}
+
+.js-note-field {
+  border: none;
+}
+
+.js-note-field:focus {
+  border-color: inherit;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+
+input:focus {
+    outline:none;
+}
+
+input[type=text]:focus, textarea:focus {
+  box-shadow: none;
+  border: none;
+}
+
+.js-note-field:focus {
+      outline: none;
+      }
