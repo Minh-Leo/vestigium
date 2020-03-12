@@ -88,11 +88,14 @@ a:hover {
   display: flex;
   flex-direction: column;
   align-items: center;
-  position: fixed;
 }
 
 #dashboard-avatar-name {
   margin: 16px 0px;
+
+  h3, h5, h6 {
+    text-align: center;
+  }
 }
 
 #edit-profile-button {

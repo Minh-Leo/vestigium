@@ -1,7 +1,6 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-3"></div>
-    <div class="col-md-3" id="left-col">
+    <div class="col-md-3 col-lg-2" id="left-col">
       <% if current_user.photo.attached? %>
         <%= image_tag current_user.photo, id: "dashboard-avatar-img" %>
       <% else %>
@@ -24,7 +23,7 @@
       <%= link_to "Log out", destroy_user_session_path, method: :delete, :id => "edit-profile-button", :class => "logout-button" %>
     </div>
 
-    <div class="col-md-9">
+    <div class="col-md-9 col-lg-10">
       <h2 id="favorite-title">Favourites</h2>
       <ul class="favorites-list" id="favorite-container">
       <!-- <div class="favorites-list"> -->
@@ -35,7 +34,7 @@
                 <%= link_to '<i class="fas fa-times-circle"></i>'.html_safe,
                   favorite_path(favorite),
                   method: :delete, :class => "favorite-delete-button" %>
-              </div>
+            </div>
 
             <div class="favorite-note-div">
               <%= simple_form_for(favorite) do |f| %>
@@ -52,12 +51,12 @@
 
               <div class="favorite-link">
                 <p> <%= link_to "#{favorite.article.title}", favorite.article.url %></p>
-                </button>
               </div>
             </div>
           </li>
           <%= render partial: "add_to_list", locals: { favorite: favorite } %>
         <% end %>
+
       </ul>
     </div>
   </div>
