@@ -22,7 +22,7 @@ class PagesController < ApplicationController
       @articles = Article.search_by_title_and_description(params[:query]).to_json.html_safe
       # @articles = PgSearch.multisearch(params[:query])
     else
-      @articles = Article.all.to_json.html_safe
+      @articles = Article.all.sample(130).to_json.html_safe
     end
   end
 
