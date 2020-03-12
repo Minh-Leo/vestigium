@@ -19,9 +19,11 @@
       <h6>You have <%= @favorites.size  %> favourites</h6>
 
       </div>
+      <div class="user-button">
       <%= link_to "Edit profile", edit_user_path(current_user),
-      :id => "edit-profile-button" %>
-      <%= link_to "Log out", destroy_user_session_path, method: :delete, :id => "edit-profile-button", :class => "logout-button" %>
+      :class => "edit-profile-button" %>
+      <%= link_to "Log out", destroy_user_session_path, method: :delete, :class => "edit-profile-button logout-button" %>
+      </div>
     </div>
 
     <div class="col-md-9">

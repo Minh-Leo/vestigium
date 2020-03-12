@@ -19,7 +19,7 @@
   width: calc(50% - 20px);
   background-color: white;
   border: 2px solid black;
-  border-top-width: 6px;
+  border-top-width: 6px solid red;
   margin: 10px;
   color: black;
 
@@ -96,7 +96,9 @@ a:hover {
   margin: 16px 0px;
 }
 
-#edit-profile-button {
+.edit-profile-button {
+  text-align: center;
+  width: 100%;
   background-color: black;
   padding: 10px 15px;
   border-radius: 5px;
@@ -104,7 +106,13 @@ a:hover {
   color: #FFEDED;
 }
 
-#edit-profile-button:hover {
+.user-button {
+  display: flex;
+  width: 100%;
+  // height: 50px;
+}
+
+.edit-profile-button:hover {
   background-color: #393D3F;
 }
 
@@ -132,7 +140,10 @@ a:hover {
 }
 
 .logout-button {
-  margin: 10px;
+ // margin: 10px;
+  background-color: red;
+  text-align: center;
+  margin-left: 8px;
 }
 
 .js-note-field {
