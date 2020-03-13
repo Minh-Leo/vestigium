@@ -22,12 +22,16 @@
   border-bottom: 1px solid rgba(#dd0000, 0.1);
 
   img {
-    margin-bottom: 20px;
+    margin-bottom: 10px;
   }
 
   h5 {
     font-family: $body-font;
     text-align: center;
+
+    p {
+      font-size: 1.15rem;
+    }
   }
 }
 
