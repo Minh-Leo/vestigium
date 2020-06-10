@@ -6,7 +6,7 @@
     "bootstrap": "^4.4.1",
     "compromise": "^13.1.1",
     "dragula": "^3.7.2",
-    "jquery": "^3.4.1",
+    "jquery": "^3.5.0",
     "mapbox-gl": "^1.8.1",
     "popper.js": "^1.16.1",
     "sortablejs": "^1.10.2",
