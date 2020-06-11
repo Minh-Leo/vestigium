@@ -76,7 +76,7 @@ puts 'begin'
 #   puts "articles from #{date} done"
 # end
 
-Article.order('created_at ASC').limit(500).destroy_all
-put Article.all.size
+# Article.order('created_at ASC').limit(500).destroy_all
+puts Article.all.size
 
 puts 'End of seeding'
