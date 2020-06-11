@@ -22,7 +22,10 @@ class PagesController < ApplicationController
       @articles = Article.search_by_title_and_description(params[:query]).to_json.html_safe
       # @articles = PgSearch.multisearch(params[:query])
     else
-      @articles = Article.all.last(1000).to_json.html_safe
+
+      @articles = Article.order("RANDOM()").all.first(130).to_json.html_safe
+
+      # @articles = Article.all.last(2000).to_json.html_safe
     end
   end
 
