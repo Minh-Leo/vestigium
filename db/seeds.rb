@@ -13,8 +13,8 @@ domains = %w[smh.com.au 9news.com.au kotaku.com.au gamespot.com fool.com.au]
 
 puts 'begin'
 
-# List.destroy_all
-# Favorite.destroy_all
+List.destroy_all
+Favorite.destroy_all
 # Article.destroy_all
 # Source.destroy_all
 # User.destroy_all

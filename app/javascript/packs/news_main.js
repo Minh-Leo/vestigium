@@ -25,12 +25,14 @@ if (dataJson.length <= 20) {
   radius = 1200;
 }
 
+let randomNews = dataJson.sort(() => Math.random() - Math.random()).slice(0, 120);
+
 
 const analyzingArticles = async () => {
   loadingScreen.style.display = 'block';
 
   // Promise.all here bc the async from slice.map return an array of promises, and promise.all catch them all and wait for them to finish
-  let articles = await Promise.all(dataJson.slice(0, 120).map( async (el, index) => {
+  let articles = await Promise.all(randomNews.map( async (el, index) => {
     el.sentiment = analyze(`${el.title} ${el.description} ${el.body}`);
     // console.log(el.sentiment, typeof(el.sentiment));
     let places = nlp(`${el.body}`).match('#Place').text();
