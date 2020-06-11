@@ -1,19 +1,29 @@
 
-export const getArticles = async (term) => {
-  const resp = await fetch(`https://newsapi.org/v2/everything?language=en&sortBy=popularity&q=${term}&pageSize=60`, {
-  method: 'GET',
-  mode: 'cors',
-  cache: 'no-cache',
-  headers: {
-    'x-api-key' : process.env.NEWS_API,
-    'Access-Control-Allow-Origin': '*',
-    'Access-Control-Allow-Methods': 'GET, POST, PATCH, DELETE, PUT, OPTIONS',
-    'Access-Control-Allow-Headers': 'Content-Type, x-api-key, Access-Control-Allow-Headers, Authorization, X-Requested-With',
-  }
-});
+const axios = require('axios');
 
-  const data = await resp.json();
-  return convertToArray(data.articles);
+
+export const getArticles = async (term) => {
+//   const resp = await fetch(`https://newsapi.org/v2/everything?language=en&sortBy=popularity&q=${term}&pageSize=60`, {
+//   method: 'GET',
+//   mode: 'cors',
+//   cache: 'no-cache',
+//   headers: {
+//     'x-api-key' : process.env.NEWS_API,
+//     'Access-Control-Allow-Origin': '*',
+//     'Access-Control-Allow-Methods': 'GET, POST, PATCH, DELETE, PUT, OPTIONS',
+//     'Access-Control-Allow-Headers': 'Content-Type, x-api-key, Access-Control-Allow-Headers, Authorization, X-Requested-With',
+//   }
+// });
+  const resp = await axios({
+    method: 'get',
+    url: `https://newsapi.org/v2/everything?language=en&sortBy=popularity&q=${term}&pageSize=60`,
+    headers: {
+      'x-api-key' : process.env.NEWS_API,
+    }
+  });
+
+  const data = await resp.data.articles;
+  return convertToArray(data);
 }
 
 const convertToArray = (articles) => {

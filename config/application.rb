@@ -15,6 +15,14 @@ module Vestigium
         end
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 5.2
+
+    config.middleware.insert_before 0, Rack::Cors do
+      allow do
+        origins ['http://localhost:3000','https://newsapi.org/']
+        resource '*', headers: :any, methods: :any
+      end
+    end
+
     # config.assets.initialize_on_precompile = false
 
     # Settings in config/environments/* take precedence over those specified here.

@@ -23,6 +23,7 @@ gem 'uglifier'
 gem 'webpacker'
 gem 'dragula-rails'
 gem 'sprockets-rails', '2.3.3'
+gem 'rack-cors'
 
 group :development do
   gem 'web-console', '>= 3.3.0'
