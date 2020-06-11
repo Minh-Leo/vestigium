@@ -5,7 +5,10 @@ export const getArticles = async (term) => {
   mode: 'cors',
   cache: 'no-cache',
   headers: {
-    'x-api-key' : process.env.NEWS_API
+    'x-api-key' : process.env.NEWS_API,
+    'Access-Control-Allow-Origin': '*',
+    'Access-Control-Allow-Methods': 'GET, POST, PATCH, DELETE, PUT, OPTIONS',
+    'Access-Control-Allow-Headers': 'Content-Type, x-api-key, Access-Control-Allow-Headers, Authorization, X-Requested-With',
   }
 });
 
