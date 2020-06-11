@@ -13,8 +13,8 @@ domains = %w[smh.com.au 9news.com.au kotaku.com.au gamespot.com fool.com.au]
 
 puts 'begin'
 
-List.destroy_all
-Favorite.destroy_all
+# List.destroy_all
+# Favorite.destroy_all
 # Article.destroy_all
 # Source.destroy_all
 # User.destroy_all
@@ -76,7 +76,7 @@ Favorite.destroy_all
 #   puts "articles from #{date} done"
 # end
 
-Article.order('created_at ASC').limit(6000).destroy_all
-put Article.size
+Article.order('created_at ASC').limit(500).destroy_all
+put Article.all.size
 
 puts 'End of seeding'

@@ -25,14 +25,26 @@ if (dataJson.length <= 20) {
   radius = 1200;
 }
 
-let randomNews = dataJson.sort(() => Math.random() - Math.random()).slice(0, 120);
-
+// let randomNews = dataJson.slice(0, 120);
+const getRandom = (arr, n) => {
+    var result = new Array(n),
+        len = arr.length,
+        taken = new Array(len);
+    if (n > len)
+        throw new RangeError("getRandom: more elements taken than available");
+    while (n--) {
+        var x = Math.floor(Math.random() * len);
+        result[n] = arr[x in taken ? taken[x] : x];
+        taken[x] = --len in taken ? taken[len] : len;
+    }
+    return result;
+}
 
 const analyzingArticles = async () => {
   loadingScreen.style.display = 'block';
 
   // Promise.all here bc the async from slice.map return an array of promises, and promise.all catch them all and wait for them to finish
-  let articles = await Promise.all(randomNews.map( async (el, index) => {
+  let articles = await Promise.all(getRandom(dataJson, 120).map( async (el, index) => {
     el.sentiment = analyze(`${el.title} ${el.description} ${el.body}`);
     // console.log(el.sentiment, typeof(el.sentiment));
     let places = nlp(`${el.body}`).match('#Place').text();
