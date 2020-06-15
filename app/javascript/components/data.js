@@ -1,6 +1,7 @@
 
 const axios = require('axios');
 
+// const url = `${proxyUrl}https://newsapi.org/v2/everything?qInTitle=${qInTitle}&from=${from}language=en&apiKey=${apiKey}`;
 
 export const getArticles = async (term) => {
 //   const resp = await fetch(`https://newsapi.org/v2/everything?language=en&sortBy=popularity&q=${term}&pageSize=60`, {
@@ -14,9 +15,11 @@ export const getArticles = async (term) => {
 //     'Access-Control-Allow-Headers': 'Content-Type, x-api-key, Access-Control-Allow-Headers, Authorization, X-Requested-With',
 //   }
 // });
+  const proxyUrl = "https://cors-anywhere.herokuapp.com/"
+
   const resp = await axios({
     method: 'get',
-    url: `https://newsapi.org/v2/everything?language=en&sortBy=popularity&q=${term}&pageSize=60`,
+    url: `${proxyUrl}https://newsapi.org/v2/everything?language=en&sortBy=popularity&q=${term}&pageSize=60`,
     headers: {
       'x-api-key' : process.env.NEWS_API,
     }
