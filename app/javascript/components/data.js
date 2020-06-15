@@ -1,10 +1,18 @@
 
-const axios = require('axios');
+// const axios = require('axios');
 
 // const url = `${proxyUrl}https://newsapi.org/v2/everything?qInTitle=${qInTitle}&from=${from}language=en&apiKey=${apiKey}`;
 
 export const getArticles = async (term) => {
-//   const resp = await fetch(`https://newsapi.org/v2/everything?language=en&sortBy=popularity&q=${term}&pageSize=60`, {
+  const proxyUrl = "https://cors-anywhere.herokuapp.com/"
+
+  const apiKey = process.env.NEWS_API;
+  const url = `${proxyUrl}https://newsapi.org/v2/everything?language=en&sortBy=popularity&q=${term}&pageSize=60&apiKey=${apiKey}`;
+  const request = new Request(url);
+
+  const resp = await fetch(request).then(data => data.json());
+
+//   const resp = await fetch(`${proxyUrl}https://newsapi.org/v2/everything?language=en&sortBy=popularity&q=${term}&pageSize=60`, {
 //   method: 'GET',
 //   mode: 'cors',
 //   cache: 'no-cache',
@@ -14,19 +22,17 @@ export const getArticles = async (term) => {
 //     'Access-Control-Allow-Methods': 'GET, POST, PATCH, DELETE, PUT, OPTIONS',
 //     'Access-Control-Allow-Headers': 'Content-Type, x-api-key, Access-Control-Allow-Headers, Authorization, X-Requested-With',
 //   }
-// });
-  const proxyUrl = "https://cors-anywhere.herokuapp.com/"
+// }).then(data => console.log(data));
 
-  const resp = await axios({
-    method: 'get',
-    url: `${proxyUrl}https://newsapi.org/v2/everything?language=en&sortBy=popularity&q=${term}&pageSize=60`,
-    requireHeader: ['origin', 'x-requested-with'],
-    headers: {
-      'x-api-key' : process.env.NEWS_API,
-    }
-  });
+  // const resp = await axios({
+  //   method: 'get',
+  //   url: `${proxyUrl}https://newsapi.org/v2/everything?language=en&sortBy=popularity&q=${term}&pageSize=60`,
+  //   headers: {
+  //     'x-api-key' : process.env.NEWS_API,
+  //   }
+  // });
 
-  const data = await resp.data.articles;
+  const data = await resp.articles;
   return convertToArray(data);
 }
 
