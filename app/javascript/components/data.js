@@ -20,6 +20,7 @@ export const getArticles = async (term) => {
   const resp = await axios({
     method: 'get',
     url: `${proxyUrl}https://newsapi.org/v2/everything?language=en&sortBy=popularity&q=${term}&pageSize=60`,
+    requireHeader: ['origin', 'x-requested-with'],
     headers: {
       'x-api-key' : process.env.NEWS_API,
     }
