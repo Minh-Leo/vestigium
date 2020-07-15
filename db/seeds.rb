@@ -29,54 +29,57 @@ puts 'begin'
 # puts "sources created, size: #{Source.all.size}"
 #
 
-# date.each do |date|
-#   sources.each do |source|
-#     data = open("#{url}#{source}&from=2020-06-#{date[0]}&to=2020-06-#{date[1]}&#{api_key}").read
-#     json = JSON.parse(data)
-#     # this below is an array
-#     sourceTemp = Source.where(name: source)
+# Destroy old articles
+Article.order('created_at ASC').limit(5000).destroy_all
 
-#     json['articles'].each do |article|
-#       artTemp = Article.new(
-#         title: article['title'],
-#         author: article['author'],
-#         url: article['url'],
-#         image_url: article['urlToImage'],
-#         description: article['description'],
-#         body: article['content'],
-#         publish_time: article['publishedAt'],
-#         )
-#       artTemp.source = sourceTemp[0]
-#       artTemp.save!
-#     end
-#     puts "articles from source #{source} done"
-#   end
+date.each do |date|
+  sources.each do |source|
+    data = open("#{url}#{source}&from=2020-07-#{date[0]}&to=2020-07-#{date[1]}&#{api_key}").read
+    json = JSON.parse(data)
+    # this below is an array
+    sourceTemp = Source.where(name: source)
 
-#   domains.each do |domain|
-#     data = open("#{baseUrl}&domains=#{domain}&from=2020-06-#{date[0]}&to=2020-06-#{date[1]}&#{api_key}").read
-#     json = JSON.parse(data)
-#     # this below is an array
-#     domainTemp = Source.where(name: domain)
+    json['articles'].each do |article|
+      artTemp = Article.new(
+        title: article['title'],
+        author: article['author'],
+        url: article['url'],
+        image_url: article['urlToImage'],
+        description: article['description'],
+        body: article['content'],
+        publish_time: article['publishedAt'],
+        )
+      artTemp.source = sourceTemp[0]
+      artTemp.save!
+    end
+    puts "articles from source #{source} done"
+  end
 
-#     json['articles'].each do |article|
-#       artTemp = Article.new(
-#         title: article['title'],
-#         author: article['author'],
-#         url: article['url'],
-#         image_url: article['urlToImage'],
-#         description: article['description'],
-#         body: article['content'],
-#         publish_time: article['publishedAt'],
-#         )
-#       artTemp.source = domainTemp[0]
-#       artTemp.save!
-#     end
-#     puts "articles from domain #{domain} done"
-#   end
-#   puts "articles from #{date} done"
-# end
+  domains.each do |domain|
+    data = open("#{baseUrl}&domains=#{domain}&from=2020-07-#{date[0]}&to=2020-07-#{date[1]}&#{api_key}").read
+    json = JSON.parse(data)
+    # this below is an array
+    domainTemp = Source.where(name: domain)
 
-# Article.order('created_at ASC').limit(500).destroy_all
+    json['articles'].each do |article|
+      artTemp = Article.new(
+        title: article['title'],
+        author: article['author'],
+        url: article['url'],
+        image_url: article['urlToImage'],
+        description: article['description'],
+        body: article['content'],
+        publish_time: article['publishedAt'],
+        )
+      artTemp.source = domainTemp[0]
+      artTemp.save!
+    end
+    puts "articles from domain #{domain} done"
+  end
+  puts "articles from #{date} done"
+end
+
+
 puts Article.all.size
 
 puts 'End of seeding'
