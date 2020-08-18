@@ -5,7 +5,7 @@ url = 'https://newsapi.org/v2/everything?language=en&sortBy=popularity&pageSize=
 baseUrl = 'https://newsapi.org/v2/everything?language=en&sortBy=popularity&pageSize=80&page=1'
 
 api_key = "apiKey=#{ENV['NEWS_API']}"
-date = [['11', '12']]
+date = [['13', '14']]
 timeframe = 'from=2020-03-05&to=2020-03-07'
 
 sources = %w[abc-news-au australian-financial-review news-com-au nbc-news cnn fox-news espn techradar the-verge the-wall-street-journal reuters time bbc-news bbc-sport independent]
@@ -56,7 +56,7 @@ date.each do |date|
   end
 
   domains.each do |domain|
-    data = open("#{baseUrl}&domains=#{domain}&from=2020-07-#{date[0]}&to=2020-07-#{date[1]}&#{api_key}").read
+    data = open("#{baseUrl}&domains=#{domain}&from=2020-08-#{date[0]}&to=2020-08-#{date[1]}&#{api_key}").read
     json = JSON.parse(data)
     # this below is an array
     domainTemp = Source.where(name: domain)
