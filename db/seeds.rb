@@ -5,7 +5,7 @@ url = 'https://newsapi.org/v2/everything?language=en&sortBy=popularity&pageSize=
 baseUrl = 'https://newsapi.org/v2/everything?language=en&sortBy=popularity&pageSize=80&page=1'
 
 api_key = "apiKey=#{ENV['NEWS_API']}"
-date = [['01', '02'], ['03', '04'], ['05', '06'], ['07', '08'], ['09', '10']]
+date = [['01', '02'], ['03', '04'], ['05', '06'], ['07', '08'], ['09', '10'], ['11', '12']]
 timeframe = 'from=2020-03-05&to=2020-03-07'
 
 sources = %w[abc-news-au australian-financial-review news-com-au nbc-news cnn fox-news espn techradar the-verge the-wall-street-journal reuters time bbc-news bbc-sport independent]
@@ -13,8 +13,8 @@ domains = %w[smh.com.au 9news.com.au kotaku.com.au gamespot.com fool.com.au]
 
 puts 'begin'
 
-# List.destroy_all
-# Favorite.destroy_all
+List.destroy_all
+Favorite.destroy_all
 # Article.destroy_all
 # Source.destroy_all
 # User.destroy_all
@@ -30,11 +30,11 @@ puts 'begin'
 #
 
 # Destroy old articles
-Article.order('created_at ASC').limit(5000).destroy_all
+Article.order('created_at ASC').limit(1000).destroy_all
 
 date.each do |date|
   sources.each do |source|
-    data = open("#{url}#{source}&from=2020-07-#{date[0]}&to=2020-07-#{date[1]}&#{api_key}").read
+    data = open("#{url}#{source}&from=2020-08-#{date[0]}&to=2020-08-#{date[1]}&#{api_key}").read
     json = JSON.parse(data)
     # this below is an array
     sourceTemp = Source.where(name: source)
