@@ -5,7 +5,7 @@ url = 'https://newsapi.org/v2/everything?language=en&sortBy=popularity&pageSize=
 baseUrl = 'https://newsapi.org/v2/everything?language=en&sortBy=popularity&pageSize=80&page=1'
 
 api_key = "apiKey=#{ENV['NEWS_API']}"
-date = [['13', '14']]
+date = [['09','10'],['11','12'],['13', '14'],['15','16'],['17','18'],['19','20']]
 timeframe = 'from=2020-03-05&to=2020-03-07'
 
 sources = %w[abc-news-au australian-financial-review news-com-au nbc-news cnn fox-news espn techradar the-verge the-wall-street-journal reuters time bbc-news bbc-sport independent]
@@ -15,7 +15,7 @@ puts 'begin'
 
 # List.destroy_all
 # Favorite.destroy_all
-# Article.destroy_all
+Article.destroy_all
 # Source.destroy_all
 # User.destroy_all
 
