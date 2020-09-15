@@ -3,7 +3,7 @@
 
  const initializeGlobalMap = () => {
   var earth = new WE.map('earth_div');
-  WE.tileLayer('https://webglearth.github.io/webglearth2-offline/{z}/{x}/{y}.jpg').addTo(earth);
+  WE.tileLayer('https://api.maptiler.com/maps/hybrid/style.json?key=OCqiqCtCXYr78LgkUxzF').addTo(earth);
 
   initializeMarkers(myMapData, earth);
   // var marker = WE.marker([51.5, -0.09]).addTo(earth);
