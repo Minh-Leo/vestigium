@@ -30,7 +30,7 @@ puts 'begin'
 #
 
 # Destroy old articles
-# Article.order('created_at ASC').limit(1000).destroy_all
+Article.order('created_at ASC').limit(2000).destroy_all
 
 date.each do |date|
   sources.each do |source|
