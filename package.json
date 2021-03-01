@@ -11,7 +11,7 @@
     "mapbox-gl": "^1.8.1",
     "popper.js": "^1.16.1",
     "sortablejs": "^1.10.2",
-    "three": "^0.114.0"
+    "three": "^0.125.0"
   },
   "devDependencies": {
     "webpack-dev-server": "^3.10.3"
